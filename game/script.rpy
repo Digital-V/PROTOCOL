@@ -34,19 +34,18 @@ image judet thinking:
     zoom 0.2
 
 # Animations
-transform shake(repeat=4):
+transform shake(repeat=2):
     yoffset 0
     easein 0.1 yoffset 20
     easeout 0.1 yoffset 0
     repeat repeat
 
-transform walk(position=0.0, time=1.0):
+transform walk(position=0.0, time=0.75):
     parallel:
         ease time xalign position
 
     parallel:
-        shake(repeat=int(time * 5))
-
+        shake(repeat=int(time * 3))
 # Evidence
 init python:
     class Clue:
