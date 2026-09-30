@@ -1,11 +1,11 @@
-
 init python:
     POS = {"jiperson": "left", "jipri": "center", "judet": "right"}
-
-    def _at(tag, dimmed):
+    def _at(tag, dimmed, shaking=False):
         p = getattr(renpy.store, POS[tag])
-        return [p, renpy.store.dim if dimmed else renpy.store.undim]
-
+        transforms = [p, renpy.store.dim if dimmed else renpy.store.undim]
+        if shaking:
+            transforms.append(renpy.store.shake)
+        return transforms
     def make_cb(tag, mood="talking"):
         def cb(event, interact=True, **kwargs):
             if not interact:
@@ -16,7 +16,7 @@ init python:
                     if t not in showing:
                         continue
                     if t == tag:
-                        renpy.show((t, mood), at_list=_at(t, False))
+                        renpy.show((t, mood), at_list=_at(t, False, shaking=(mood == "talking")))
                     else:
                         renpy.show((t,), at_list=_at(t, True))
             elif event == "end":
@@ -24,7 +24,6 @@ init python:
                     if t in showing:
                         renpy.show((t,), at_list=_at(t, False))
         return cb
-
 #change image name if not identical
 define judet = Character("Judet", image="judet", callback=make_cb("judet"))
 define jipri = Character("Jipri", image="jipri", callback=make_cb("jipri"))
@@ -36,40 +35,34 @@ define judet_ta = Character("Judet", image="judet", callback=make_cb("judet", "t
 define jipri_ta = Character("Jipri", image="jipri", callback=make_cb("jipri", "talking"), what_italic=True)
 define jiperson_ta = Character("Jiperson", image="jiperson", callback=make_cb("jiperson", "talking"), what_italic=True)
 #change each name asset if not identical
-image judet = Transform("judet.png", zoom=0.25)
-image judet talking = Transform("judet talking.png", zoom=0.25,)
-image judet thinking = Transform("judet thinking.png", zoom=0.25)
-image jipri = Transform("jipri.png", zoom=0.25)
-image jipri talking = Transform("jipri talking.png", zoom=0.25)
-image jipri thinking = Transform("jipri thinking.png", zoom=0.25)
-image jiperson = Transform("jiperson.png", zoom=0.25)
-image jiperson talking = Transform("jiperson talking.png", zoom=0.25)
-image jiperson thinking = Transform("jiperson thinking.png", zoom=0.25)
+image judet = Transform("judet.png", zoom=0.20)
+image judet talking = Transform("judet talking.png", zoom=0.20)
+image judet thinking = Transform("judet thinking.png", zoom=0.20)
+image jipri = Transform("jipri.png", zoom=0.20)
+image jipri talking = Transform("jipri talking.png", zoom=0.20)
+image jipri thinking = Transform("jipri thinking.png", zoom=0.20)
+image jiperson = Transform("jiperson.png", zoom=0.20)
+image jiperson talking = Transform("jiperson talking.png", zoom=0.20)
+image jiperson thinking = Transform("jiperson thinking.png", zoom=0.20)###
 
 image evidence_placeholder1 = Fixed(
     Solid("#8a794b", xsize=840, ysize=460),
     Transform("L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
-    
     Text("Evidence Obtained: Pigafetta's Account", size=30, color="#060606", xpos=44, ypos=34),
-
     xsize=840,
     ysize=460
 )
 image evidence_placeholder2 = Fixed(
     Solid("#8a794b", xsize=840, ysize=460),
     Transform("L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
-    
     Text("Evidence Obtained: Mazua Identity", size=30, color="#060606", xpos=44, ypos=34),
-
     xsize=840,
     ysize=460
 )
 image evidence_placeholder3 = Fixed(
     Solid("#8a794b", xsize=840, ysize=460),
     Transform("L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
-    
     Text("Evidence Obtained: Geographical Description", size=30, color="#060606", xpos=44, ypos=34),
-
     xsize=840,
     ysize=460
 )
@@ -77,9 +70,7 @@ image evidence_placeholder3 = Fixed(
 image evidence_placeholder4 = Fixed(
     Solid("#8a794b", xsize=840, ysize=460),
     Transform("L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
-    
     Text("Evidence Obtained: Two Rulers / Political Context", size=30, color="#060606", xpos=44, ypos=34),
-
     xsize=840,
     ysize=460
 )
@@ -87,9 +78,7 @@ image evidence_placeholder4 = Fixed(
 image evidence_placeholder5 = Fixed(
     Solid("#8a794b", xsize=840, ysize=460),
     Transform("L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
-    
     Text("Evidence Obtained: Primary Sources vs. Later Tradition", size=30, color="#060606", xpos=44, ypos=34),
-
     xsize=840,
     ysize=460
 )
@@ -97,14 +86,7 @@ transform dim:
     matrixcolor BrightnessMatrix(-0.3)
 transform undim:
     matrixcolor BrightnessMatrix(0.0)
-
-
 label chapter3:
-
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
     scene black
     with fade
     show text "{size=76}CHAPTER 3{/size}" at truecenter
@@ -188,7 +170,7 @@ label chapter3:
     pause 3.0
     hide text
     with dissolve
-    scene museum
+    scene coastal_area2
     with fade
     show jiperson at left
     show jipri at center
@@ -205,4 +187,78 @@ label chapter3:
     jiperson_ti "Wait, parang nag i-iba na yung approach natin."
     jipri_ta " Akala ko ako lang ang naka pansin."
     jipri_ti "Ngayon, hinahanap na natin kung alin ang mas tugma sa description ng Mazua instead na hanapin natin mismo kung ano ang connection nito sa Butuan."
+    scene black
+    with fade
+    show text "{size=50}{i}Habang naghahanap ng ebidensya...{/size}{i}"
+    with dissolve
+    pause 3.0
+    hide text
+    with dissolve
+    scene seaside
+    with fade
+    show judet at right
+    show jipri at center
+    with dissolve
+    judet_ta "Wait, bakit tayo bumalik sa Butuan side?"
+    jipri_ti "May kailangan tayong linawin tungkol sa ruler evidence na nakita natin noon."
+    show jiperson at left
+    with dissolve
+    jiperson_ta "Yung ruler na connected sa Butuan?"
+    jipri_ti "Oo."
+    show evidence_placeholder4 at truecenter
+    with dissolve
+    pause
+    hide evidence_placeholder4
+    jipri_ti "May mga pinunong naging bahagi ng pangyayari noong expedition."
+    jipri_ta "May connection ang isang ruler sa Butuan, pero may mga ibang lugar at pinuno ring involved sa mga pangyayari."
+    judet_ti "So? Hindi porke connected sa Butuan yung isang ruler, ibig sabihin doon na mismo ang First Mass?"
+    jipri_ta "Tama."
+    jiperson_ta "Ang ruler ay evidence ng connection, pero kailangan pa rin nating patunayan ang lugar/lokasyon."
+    scene black
+    with fade
+    show text "{size=50}{i}Papunta sa library...{/size}{i}"
+    with dissolve
+    pause 3.0
+    hide text
+    with dissolve
+    scene library
+    with fade
+    show judet at right
+    show jipri at center
+    show jiperson at left
+    with dissolve
+    jiperson_ta "Ano naman ang hahanapin natin dito?"
+    jipri_ta "Mga historical writings. Kailangan nating makumipirma ang mga naunang sources at mga interpretations."
+    jiperson_ti "Edi may pagkakaiba?"
+    jipri_ta "Meron."
+    show evidence_placeholder5 at truecenter
+    with dissolve
+    pause
+    hide evidence_placeholder5
+    jipri_ti "Sa account ni Pigafetta, ginamit niya nag pangalang Mazua."
+    jiperson_ta "Habang may mga later historical writings na nag-uugnay nito sa Butuan."
+    jipri_ta "Kailangan nating tignan kung saan nanggaling ang bawat interpretation."
+    jiperson_ta "Meaning, hindi natin pwedeng paghaluin yung orginal account at yung mga bagong interpretation."
+    scene black
+    with fade
+    show text "{size=50}{i}...{/size}{i}"
+    with dissolve
+    pause 1.5
+    hide text
+    with dissolve
+    scene library
+    with fade
+    show jiperson at left
+    show jipri at center
+    show judet at right
+    with dissolve
+    judet_ta "So… yung mga evidence natin sa Butuan, hindi naman pala basta-basta fake."
+    jiperson_ta "Pero hindi rin natin masasabi na sapat iyo para masabing Butuan talaga ang Mazua."
+    jipri_ta "Tama."
+    judet_ti "May historical connection naman. May ruler. May traditions."
+    jipri_ti "Pero may original account na nagsasabing Mazua, at kailangan pa nating malaman kung saan ba talaga yon."
+    jipri_ta "At ngayon, alam na natin kung ano ang susunod nating gagawin."
+    judet_ta "Ano naman 'yon?"
+    jipri_ta "Hanapin natin kung aling lugar ang pinaka tumutugma sa lahat ng descriptions ng Mazua."
+    jiperson_ta "Hmmm… *sigh* May point ka diyan."
     return

@@ -1,21 +1,10 @@
-define jiperson = Character("Jiperson", image="jiperson")
-define jipri = Character("Jipri", image="jipri")
-define judet = Character("Judet", image="judet")
+define jiperson = Character("Jiperson", image="jiperson", color="#ffcc00")
+define jipri = Character("Jipri", image="jipri", color="#00ffcc")
+define judet = Character("Judet", image="judet", color="#ff66b2")
+
+default historical_choice = None
 
 #Place holdes satrt can be deleted later when assets are ready.
-init python:
-    def expression_placeholder(base_image, mood, accent):
-        return Transform(
-            Fixed(
-                base_image,
-                Solid(accent, xsize=184, ysize=44, xpos=200, ypos=26),
-                Text(mood, size=18, color="#fff4dd", xpos=212, ypos=36),
-                xsize=400,
-                ysize=620
-            ),
-            zoom=1.1
-        )
-
 image bg placeholder_coastal_area = Fixed(
     Solid("#18343a", xsize=1920, ysize=1080),
     Solid("#315c58", xsize=1920, ysize=250, ypos=830),
@@ -48,42 +37,6 @@ image bg placeholder_limasawa_shrine = Fixed(
     xsize=1920,
     ysize=1080
 )
-
-image jiperson placeholder = Fixed(
-    Solid("#386f75", xsize=400, ysize=620),
-    Solid("#e3a35c", xsize=400, ysize=14),
-    Text("JP", size=112, color="#fff4dd", xalign=0.5, yalign=0.38),
-    Text("JI PERSON\nPLACEHOLDER", size=29, color="#fff4dd", xalign=0.5, yalign=0.82),
-    xsize=400,
-    ysize=620
-)
-
-image jipri placeholder = Fixed(
-    Solid("#59634d", xsize=400, ysize=620),
-    Solid("#d5b96d", xsize=400, ysize=14),
-    Text("JR", size=112, color="#fff4dd", xalign=0.5, yalign=0.38),
-    Text("JIPRI\nPLACEHOLDER", size=29, color="#fff4dd", xalign=0.5, yalign=0.82),
-    xsize=400,
-    ysize=620
-)
-
-image judet placeholder = Fixed(
-    Solid("#76534a", xsize=400, ysize=620),
-    Solid("#d5b96d", xsize=400, ysize=14),
-    Text("JD", size=112, color="#fff4dd", xalign=0.5, yalign=0.38),
-    Text("JUDET\nPLACEHOLDER", size=29, color="#fff4dd", xalign=0.5, yalign=0.82),
-    xsize=400,
-    ysize=620
-)
-
-image jiperson placeholder speaking = expression_placeholder("jiperson placeholder", "SPEAKING", "#dfad58")
-image jiperson placeholder thinking = expression_placeholder("jiperson placeholder", "THINKING", "#5297a0")
-
-image jipri placeholder speaking = expression_placeholder("jipri placeholder", "SPEAKING", "#dfad58")
-image jipri placeholder thinking = expression_placeholder("jipri placeholder", "THINKING", "#5297a0")
-
-image judet placeholder speaking = expression_placeholder("judet placeholder", "SPEAKING", "#dfad58")
-image judet placeholder thinking = expression_placeholder("judet placeholder", "THINKING", "#5297a0")
 
 image investigation_board_placeholder = Fixed(
     Solid("#e4d8b8", xsize=840, ysize=460),
@@ -127,29 +80,53 @@ label chapter4:
     with fade
 
     # EVIDENCE 1: EXPEDITION ROUTE
-    show jiperson placeholder at stage_center
-    show jipri placeholder at stage_left
-    show judet placeholder at stage_right
+    show jipri normal:
+        offscreenleft
+        walk(position=0.15, time=2)
+    show jiperson normal:
+        offscreenleft
+        walk(position=0.5, time=3)
+    show judet normal:
+        offscreenright
+        walk(position=0.85, time=2)
+    pause 3.0
 
-    jiperson @ speaking "So ito na ba yung route ng expedition?"
-    jipri @ speaking "Oo. Kailangan nating ikumpara ang recorded route sa lugar na pinagpipilian natin. Sa Butuan o Limasawa."
+    jiperson @ talking "So ito na ba yung route ng expedition?"
+    jipri @ talking "Oo. Kailangan nating ikumpara ang recorded route sa lugar na pinagpipilian natin. Sa Butuan o Limasawa."
     judet @ thinking "So paano kung hindi tugma yung location sa route, ibig sabihin ba questionable na yung claim?"
-    jipri @ speaking "Tama."
+    jipri @ talking "Tama."
+
+    show jipri normal at walk(position=-0.5, time=1.5)
+    show jiperson normal at walk(position=-0.5, time=2)
+    show judet normal at walk(position=-0.5, time=2.5)
+    pause 2.5
 
     hide jiperson
     hide jipri
     hide judet
 
     # EVIDENCE 2: DISTANCE AND DIRECTION
-    show jiperson placeholder at stage_center
-    show jipri placeholder at stage_left
-    show judet placeholder at stage_right
+    show jipri normal:
+        offscreenleft
+        walk(position=0.15, time=2)
+    show jiperson normal:
+        offscreenleft
+        walk(position=0.5, time=3)
+    show judet normal:
+        offscreenright
+        walk(position=0.85, time=2)
+    pause 3.0
 
-    judet @ speaking "May compass at distance markers dito."
-    jipri @ speaking "Gagamitin natin yung recorded directions at distances bilang clues."
+    judet @ talking "May compass at distance markers dito."
+    jipri @ talking "Gagamitin natin yung recorded directions at distances bilang clues."
     jiperson @ thinking "So hindi lang kung saan sila pumunta, pati na rin kung gaano kalayo at anong direksyon."
     judet @ thinking "Hmmm... and kapag pinagsama natin yung route, distance, at direction..."
-    jipri @ speaking "...mas makikita natin kung alin ang mas consistent."
+    jipri @ talking "...mas makikita natin kung alin ang mas consistent."
+
+    show jipri normal at walk(position=-0.5, time=1.5)
+    show jiperson normal at walk(position=-0.5, time=2)
+    show judet normal at walk(position=-0.5, time=2.5)
+    pause 2.5
 
     hide jiperson
     hide jipri
@@ -159,17 +136,29 @@ label chapter4:
     scene bg placeholder_limasawa_island
     with dissolve
 
-    show jiperson placeholder at stage_center
-    show jipri placeholder at stage_left
-    show judet placeholder at stage_right
+    show jipri normal:
+        offscreenleft
+        walk(position=0.15, time=2)
+    show jiperson normal:
+        offscreenleft
+        walk(position=0.5, time=3)
+    show judet normal:
+        offscreenright
+        walk(position=0.85, time=2)
+    pause 3.0
 
-    jiperson @ speaking "Wait, nasa Limasawa tayo?"
-    jipri @ speaking "Oo."
-    judet @ speaking "Ibig sabihin pwede natin ma-check dito yung ibang descriptions ng Mazaua?"
-    jipri @ speaking "Sa account ni Pigafetta, ang Mazaua ay inilarawan bilang isang isla."
-    jiperson @ speaking "And Limasawa is an island."
+    jiperson @ talking "Wait, nasa Limasawa tayo?"
+    jipri @ talking "Oo."
+    judet @ talking "Ibig sabihin pwede natin ma-check dito yung ibang descriptions ng Mazaua?"
+    jipri @ talking "Sa account ni Pigafetta, ang Mazaua ay inilarawan bilang isang isla."
+    jiperson @ talking "And Limasawa is an island."
     judet @ thinking "Pero sabi mo kanina, hindi sapat ang isang evidence."
-    jiperson @ speaking "Correct. Kaya kailangan pa rin natin i-connect sa route, distance, direction, at sa original account."
+    jiperson @ talking "Correct. Kaya kailangan pa rin natin i-connect sa route, distance, direction, at sa original account."
+
+    show jipri normal at walk(position=-0.5, time=1.5)
+    show jiperson normal at walk(position=-0.5, time=2)
+    show judet normal at walk(position=-0.5, time=2.5)
+    pause 2.5
 
     hide jiperson
     hide jipri
@@ -180,13 +169,20 @@ label chapter4:
     scene bg placeholder_limasawa_shrine
     with dissolve
 
-    show jiperson placeholder at stage_center
-    show jipri placeholder at stage_left
-    show judet placeholder at stage_right
+    show jipri normal:
+        offscreenleft
+        walk(position=0.15, time=2)
+    show jiperson normal:
+        offscreenleft
+        walk(position=0.5, time=3)
+    show judet normal:
+        offscreenright
+        walk(position=0.85, time=2)
+    pause 3.0
 
-    judet @ speaking "Ito na ba yung shrine?"
+    judet @ talking "Ito na ba yung shrine?"
 
-    jipri @ speaking "Oo. At dito natin pagsasama-samahin ang lahat."
+    jipri @ talking "Oo. At dito natin pagsasama-samahin ang lahat."
 
     # Investigation board placeholder
     show investigation_board_placeholder at investigation_board_center
@@ -196,9 +192,9 @@ label chapter4:
     pause
 
     jiperson @ thinking "Kapag pinag-connect natin lahat..."
-    judet @ speaking "Mas nag-lead sa Limasawa."
-    jipri @ speaking "Hmm... Pero kailangan nating tandaan na hindi lamang isang evidence ang nagbigay sa atin ng conclusion."
-    jipri @ speaking "So, after reviewing all the evidence, which side are you guys?"
+    judet @ talking "Mas nag-lead sa Limasawa."
+    jipri @ talking "Hmm... Pero kailangan nating tandaan na hindi lamang isang evidence ang nagbigay sa atin ng conclusion."
+    jipri @ talking "So, after reviewing all the evidence, which side are you guys?"
 
     # PLAYER CHOICE
     menu:
@@ -211,10 +207,10 @@ label chapter4:
 
 label chapter4_choice_result:
     # REGARDLESS OF CHOICE
-    jipri @ speaking "Interesting. Pero hindi pa tapos ang investigation."
-    judet @ speaking "Bakit? May kulang pa ba na evidence?"
-    jipri @ speaking "Meron."
-    jipri @ speaking "At dito natin malalaman kung ano ang naging conclusion kung Butuan ba o Limasawa."
+    jipri @ talking "Interesting. Pero hindi pa tapos ang investigation."
+    judet @ talking "Bakit? May kulang pa ba na evidence?"
+    jipri @ talking "Meron."
+    jipri @ talking "At dito natin malalaman kung ano ang naging conclusion kung Butuan ba o Limasawa."
 
     scene black
     with fade
