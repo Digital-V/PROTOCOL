@@ -34,10 +34,18 @@ image judet thinking:
     zoom 0.2
 
 # Animations
-transform bounce:
+transform shake(repeat=4):
     yoffset 0
-    easein 0.1 yoffset -20
+    easein 0.1 yoffset 20
     easeout 0.1 yoffset 0
+    repeat repeat
+
+transform walk(position=0.0, time=1.0):
+    parallel:
+        ease time xalign position
+
+    parallel:
+        shake(repeat=int(time * 5))
 
 # Evidence
 init python:
@@ -197,7 +205,7 @@ screen search_shrine():
 label start:
     show screen chapter_info_hud
 
-    call chapter1
+    # call chapter1
     call chapter2
     call chapter3
     call chapter4

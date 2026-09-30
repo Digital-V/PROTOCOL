@@ -1,5 +1,177 @@
 label chapter2:
     scene black
     with fade
-    centered "{size=50}CHAPTER 2 - COMING SOON{/size}"
+
+    show text "{size=76}CHAPTER 4{/size}" at truecenter
+    with dissolve
+    pause 2.0
+    hide text
+    with dissolve
+
+    # Evidence 1:
+    scene bg monument
+    with fade
+
+    show jipri normal:
+        offscreenleft
+        walk(position=0.0)
+    pause 1.0
+
+    show jipri talking
+    jipri "Narito naman tayo sa dakong kung saan matatagpuan ang monumento ukol sa pangyayari ng Sunday Mass dito sa Butuan"
+
+    show jipri normal
+    show judet normal:
+        offscreenright
+        walk(position=1.0)
+    pause 1.0
+    
+    show judet talking
+    judet "Woah! Kung di ako nagkakamali ito ay ipinatayo ng pamahalaang Kastila, di ba?"
+
+    show judet normal
+    show jipri talking at shake
+    jipri "Tama. base sa history ay itinayo ito ng mga prayleng rekolekto noong 1872 upang igunita ang unang Misa na nangyari noong Abril 8, 1521."
+
+    # prompt the screen (wait lang, dito ko ilalagay yung examine the evidence, magrereview lang ako)
+    
+    show jipri normal
+    show judet normal at walk(position=0.85)
+    show jiperson normal:
+        offscreenright
+        walk(position=1.1)
+    pause 0.5
+
+    show jiperson thinking
+    jiperson "Pero, di naman siguro nangangahulugang dito talaga nangyari sa lugar na to ang unang Misa."
+
+    show jiperson normal
+    show jipri talking at shake
+    jipri "May punto kayo ngunit base kasi sa impormasyong 'to, mismong pamahalaan na ng Kastila ang nagpatayo ng monumentong ito. Kaya naman masasabi natin na dito talaga nangyari ang unang Misa. Sino pa bang mas makakaalam nito kundi ang mismong mga Kastila?"
+
+    show jipri normal
+    show judet thinking at shake
+    judet "Eh, ngunit naroon din ang tanong kung mapagkakatiwalaan ba talaga mismo ang mga Kastila?"
+
+    show judet normal
+    show jipri talking at shake
+    jipri "Oh siya oh siya, dumako naman tayo sa susunod na lugar at baka mainip na kayo rito."
+
+    show jipri normal at walk(position=-0.5, time=2)
+    show judet normal at  walk(position=-0.5, time=3)
+    show jiperson normal at walk(position=-0.5, time=4)
+
+    pause 1.0
+
+    # Evidence 2: Historical Accounts
+    # Habang naglalakbay patungo sa kasunod na dako, sa tabing dagat malapit sa port side
+    scene bg tabing_dagat
+    with fade
+    
+    show judet normal:
+        offscreenright
+        xalign 1.35
+        walk(position=0.15, time=3)
+    show jipri normal:
+        offscreenright
+        xalign 1.7
+        walk(position=0.5, time=3)
+    show jiperson normal:
+        offscreenright
+        xalign 2.05
+        walk(position=0.85, time=3)
+    pause 1.0
+    
+    show judet talking
+    judet "Jipri, bukod sa mga ebidensyang nalakap natin, may mga iba pa bang nagpapatunay na Butuan ang lugar ng Unang Misa?"
+    
+    show judet normal
+    show jipri thinking at shake
+    jipri "Hmm, kung 'di ako nagkakamali, may isinulat si Padre Colin, isang hesuwistang misyonaryo na naglimbag ng Labor Evangelica. Base sa kanyang ang Unang Misa mismo ay dito sa Butuan. Heto, mayro'n akong kopya kung gusto mo makita."
+
+    # prompt the screen (dito ko ilalagay yung examine the evidence)
+    
+    show jipri normal 
+    show jiperson talking at shake
+    jiperson "Parang karamihan ng mga misyonaryo ay iisa lang ang sinasabi, Butuan talaga ang lugar ng Unang Misa. (Kaso bakit nga ba pare-parehas sila ng sinasabi?)"
+
+    show jiperson normal
+    show judet talking at shake
+    judet "Oo nga! Pero 'di ko rin mapigilan at isipin na ano ang naging rason nila bakit Butuan ang lugar na kung saan nangyari ang Unang Misa?"
+
+    show judet normal
+    show jipri talking at shake
+    jipri "Hindi kita masisisi kung ganyan ang naiisip mo ngunit hayaan natin ang mga ebidensya ang magdikta."
+    
+    show judet normal at  walk(position=-0.85, time=3)
+    show jipri normal at walk(position=-0.5, time=3)
+    show jiperson normal at walk(position=-0.15, time=3)
+
+    pause 1.0
+
+    # Evidence 3: Magellan's expedition
+    # tabing dagat malapit sa port side
+    scene bg port_side
+    with fade
+
+    show judet normal:
+        offscreenright
+        walk(position=1.0)
+    pause 1.0
+    
+    show judet talking
+    judet "Sa wakas at narito na rin tayo sa huling dako natin!"
+
+    show judet normal at walk(position=0.75)
+    show jiperson normal:
+        offscreenright
+        walk(position=1.1)
+    pause 1.0
+
+    show jiperson talking
+    jiperson "Grabe, ang haba ng nilakbay natin pero di naman ako nagrereklamo. Hindi ko maikakaila na maganda ang tanawin dito. Bandang don makikita mo rin ang mga barkong dumadako!"
+    
+    show judet normal at walk(position=0.5)
+    show jiperson normal at walk(position=0.75)
+    show jipri normal:
+        offscreenright
+        walk(position=1.1)
+    pause 1.0
+
+    show jipri talking
+    jipri "Sa totoo lang, kaya ito rin ang sinadya kong gawing dulo dahil iba ang ganda rito."
+    
+    show jipri normal
+    show judet thinking at shake
+    judet "Napaisip lang ako, kung tatanggalin mo ang mga istrukturang nakikita natin ngayon, eto siguro mismo ang nakita nila Magellan noong sila'y naglayag. Hindi ko maisip kung gaano mas kaganda ang tanawin nilang nakita."
+    
+    show judet normal
+    show jipri talking at shake
+    jipri "Ah! Ngayong nabanggit mo si Magellan, isa pa sa mga naging dahilan na kung bakit Butuan ang nasabing lugar ng unang misa ay dahil dito sila dumako matapos ang laban nila sa Mactan."
+    
+    show jipri normal
+    show jiperson talking at shake
+    jiperson "Siyang tunay?"
+    
+    show jiperson normal
+    show jipri talking at shake
+    jipri "Tunay, tunay. Base sa kanilang paglalayag, ang mga natitirang barko ay tumungo sa baybayin ng hilaga at kanluran ng Mindanao."
+    
+    # prompt the screen
+    
+    show jipri normal
+    show judet talking at shake
+    judet "Ito ba 'yung mapa ukol sa direksyon ng kanilang paglalayag?"
+    
+    show judet normal
+    show jiperson thinking at shake
+    jiperson "Mukhang ito nga."
+    
+    show jiperson normal
+    show jipri talking at shake
+    jipri "Ayang nakikita nyo ay ang kanilang ruta tungo rito sa Butuan."
+
+    # may continuation pa ng conclusion dito, di ko pa muna maiaadd, need ko pa mag-review huhuu
+    "JJ (The Legend)" "More parts will be added here..."
+
     return
