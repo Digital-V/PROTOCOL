@@ -80,29 +80,53 @@ label chapter4:
     with fade
 
     # EVIDENCE 1: EXPEDITION ROUTE
-    show jiperson normal at stage_center
-    show jipri normal at stage_left
-    show judet normal at stage_right
+    show jipri normal:
+        offscreenleft
+        walk(position=0.15, time=2)
+    show jiperson normal:
+        offscreenleft
+        walk(position=0.5, time=3)
+    show judet normal:
+        offscreenright
+        walk(position=0.85, time=2)
+    pause 3.0
 
     jiperson @ talking "So ito na ba yung route ng expedition?"
     jipri @ talking "Oo. Kailangan nating ikumpara ang recorded route sa lugar na pinagpipilian natin. Sa Butuan o Limasawa."
     judet @ thinking "So paano kung hindi tugma yung location sa route, ibig sabihin ba questionable na yung claim?"
     jipri @ talking "Tama."
 
+    show jipri normal at walk(position=-0.5, time=1.5)
+    show jiperson normal at walk(position=-0.5, time=2)
+    show judet normal at walk(position=-0.5, time=2.5)
+    pause 2.5
+
     hide jiperson
     hide jipri
     hide judet
 
     # EVIDENCE 2: DISTANCE AND DIRECTION
-    show jiperson normal at stage_center
-    show jipri normal at stage_left
-    show judet normal at stage_right
+    show jipri normal:
+        offscreenleft
+        walk(position=0.15, time=2)
+    show jiperson normal:
+        offscreenleft
+        walk(position=0.5, time=3)
+    show judet normal:
+        offscreenright
+        walk(position=0.85, time=2)
+    pause 3.0
 
     judet @ talking "May compass at distance markers dito."
     jipri @ talking "Gagamitin natin yung recorded directions at distances bilang clues."
     jiperson @ thinking "So hindi lang kung saan sila pumunta, pati na rin kung gaano kalayo at anong direksyon."
     judet @ thinking "Hmmm... and kapag pinagsama natin yung route, distance, at direction..."
     jipri @ talking "...mas makikita natin kung alin ang mas consistent."
+
+    show jipri normal at walk(position=-0.5, time=1.5)
+    show jiperson normal at walk(position=-0.5, time=2)
+    show judet normal at walk(position=-0.5, time=2.5)
+    pause 2.5
 
     hide jiperson
     hide jipri
@@ -112,9 +136,16 @@ label chapter4:
     scene bg placeholder_limasawa_island
     with dissolve
 
-    show jiperson normal at stage_center
-    show jipri normal at stage_left
-    show judet normal at stage_right
+    show jipri normal:
+        offscreenleft
+        walk(position=0.15, time=2)
+    show jiperson normal:
+        offscreenleft
+        walk(position=0.5, time=3)
+    show judet normal:
+        offscreenright
+        walk(position=0.85, time=2)
+    pause 3.0
 
     jiperson @ talking "Wait, nasa Limasawa tayo?"
     jipri @ talking "Oo."
@@ -123,6 +154,11 @@ label chapter4:
     jiperson @ talking "And Limasawa is an island."
     judet @ thinking "Pero sabi mo kanina, hindi sapat ang isang evidence."
     jiperson @ talking "Correct. Kaya kailangan pa rin natin i-connect sa route, distance, direction, at sa original account."
+
+    show jipri normal at walk(position=-0.5, time=1.5)
+    show jiperson normal at walk(position=-0.5, time=2)
+    show judet normal at walk(position=-0.5, time=2.5)
+    pause 2.5
 
     hide jiperson
     hide jipri
@@ -133,9 +169,16 @@ label chapter4:
     scene bg placeholder_limasawa_shrine
     with dissolve
 
-    show jiperson normal at stage_center
-    show jipri normal at stage_left
-    show judet normal at stage_right
+    show jipri normal:
+        offscreenleft
+        walk(position=0.15, time=2)
+    show jiperson normal:
+        offscreenleft
+        walk(position=0.5, time=3)
+    show judet normal:
+        offscreenright
+        walk(position=0.85, time=2)
+    pause 3.0
 
     judet @ talking "Ito na ba yung shrine?"
 

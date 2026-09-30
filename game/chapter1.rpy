@@ -1,14 +1,29 @@
 label chapter1:
     scene bg town_street
     
+    show jiperson normal:
+        offscreenleft
+        walk(position=0.0)
+    pause 1.0
+
     show jiperson talking at left, shake
     jp "Paano ba yan nandito na tayo sa pag ba-bakasyunan natin para mag explore at maghanap ng evidence para sa First Mass."
     
     show jiperson normal
+    show jipri normal:
+        offscreenleft
+        walk(position=0.5)
+    pause 1.0
+
     show jipri talking at center, shake
     jr "Isang makasaysayang pangyayari, dalawang lugar, at mga ebidensya na parang hindi nagtutugma sa isa't-isa."
     
     show jipri normal
+    show judet normal:
+        offscreenright
+        walk(position=1.0)
+    pause 1.0
+
     show judet thinking at right
     jd "Gagawin ba talaga natin to? Nalipasan na to ng panahon e, kailangan pa ba natin ulit ungkatin at imbestigahan?"
     
@@ -32,8 +47,18 @@ label chapter1:
     show jipri talking at center, shake
     jr "Tignan natin. Pero hindi tayo pumunta dito para mag assume agad. Nandito tayo para alamin kung ano ba talaga ang totoong nangyari."
 
+    show jiperson normal at walk(position=-0.5, time=1.5)
+    show jipri normal at walk(position=-0.5, time=2)
+    show judet normal at walk(position=-0.5, time=2.5)
+    pause 2.5
+
     scene bg museum
     with fade
+
+    show jipri normal:
+        offscreenleft
+        walk(position=0.5)
+    pause 1.0
 
     show jipri talking at center, shake
     jr "Nandito na tayo sa museum para makakita ng pang unang evidence. O ito na pala pang unang evidence para saatin."
@@ -55,6 +80,11 @@ label chapter1:
     jr "So matagal na palang may connection ang Butuan sa First Mass."
     
     show jipri normal
+    show judet normal:
+        offscreenright
+        walk(position=1.0)
+    pause 1.0
+
     show judet thinking at right
     jd "Oo, kaya hindi rin basta-basta lang nabuo ang Butuan claim."
     
@@ -62,17 +92,35 @@ label chapter1:
     show jipri talking at center, shake
     jr "Interesting, pero kailangan pa natin makahanap ng iba pang evidence."
 
+    show jipri normal at walk(position=-0.5, time=2)
+    show judet normal at walk(position=-0.5, time=2.5)
+    pause 2.5
+
     scene bg agusan_river
     with fade
+
+    show jiperson normal:
+        offscreenleft
+        walk(position=0.0)
+    pause 1.0
 
     show jiperson talking at left, shake
     jp "Hali na kayo pumunta naman tayo sa susunod na lugar para maka-kalap pa ng iba pang evidence dahil sa Agusan River Area maraming tao ang nagsasabi na may pinunong na involve nung panahon ni Magellan."
     
     show jiperson normal
+    show judet normal:
+        offscreenright
+        walk(position=1.0)
+    pause 1.0
+
     show judet talking at right, shake
     jd "O nandito na pala tayo sa Agusan River area may narinig na rin ako na pangalawang evidence."
 
     show judet normal
+    show jipri normal:
+        offscreenleft
+        walk(position=0.5)
+    pause 1.0
 
     window hide 
     call screen search_agusan 
@@ -106,17 +154,36 @@ label chapter1:
     show jiperson talking at left, shake
     jp "Exactly. Yun ang dapat talaga nating alamin."
 
+    show jiperson normal at walk(position=-0.5, time=1.5)
+    show jipri normal at walk(position=-0.5, time=2)
+    show judet normal at walk(position=-0.5, time=2.5)
+    pause 2.5
+
     scene bg balanghai_shrine
     with fade
+
+    show jiperson normal:
+        offscreenleft
+        walk(position=0.0)
+    pause 1.0
 
     show jiperson talking at left, shake
     jp "Tayo na sa Balanghai Shrine doon daw makakakita pa tayo ng panibagong evidence."
     
     show jiperson normal
+    show judet normal:
+        offscreenright
+        walk(position=1.0)
+    pause 1.0
+
     show judet talking at right, shake
     jd "Oh ito na tayo sa Balanghai Shrine ayan na at pinag uusapan ng mga taga rito makinig tayo at baka maging isa rin itong evidence para sa atin at baka sakaling magamit natin ito."
 
     show judet normal
+    show jipri normal:
+        offscreenleft
+        walk(position=0.5)
+    pause 1.0
 
     window hide 
     call screen search_shrine

@@ -2,7 +2,7 @@ label chapter2:
     scene black
     with fade
 
-    show text "{size=76}CHAPTER 4{/size}" at truecenter
+    show text "{size=76}CHAPTER 2{/size}" at truecenter
     with dissolve
     pause 2.0
     hide text
