@@ -70,7 +70,7 @@ label chapter1:
     $ inventory.append(ev_butuan_1)
     
     show screen examine_clue(ev_butuan_1)
-    "Nakahanap kayo ng ebidensya: Isang lumang 19th century spanish colonial newspaper."
+    "Evidence Found! Isang lumang 19th century spanish colonial newspaper."
     
     show jipri talking at center, shake
     jr "May matagal nang historical tradition na nag uugnay sa Butuan sa expedition ni Magellan at sa First Mass."
@@ -127,7 +127,7 @@ label chapter1:
     $ inventory.append(ev_butuan_3)
     
     show screen examine_clue(ev_butuan_3)
-    "Nakahanap kayo ng ebidensya: 2D Character dossier card of Rajah Siawi."
+    "Evidence Found! 2D Character dossier card of Rajah Siawi."
 
     show jipri talking at center, shake
     jr "Ito ang sinabi satin ng ibang tao, Talaga bang may connection ito sa mga narinig mo Judet?"
@@ -190,7 +190,7 @@ label chapter1:
     $ inventory.append(ev_butuan_4)
     
     show screen examine_clue(ev_butuan_4)
-    "Nakahanap kayo ng ebidensya: Lumang manuscript na naglalaman ng sipi mula kila Fr. Francisco Colin at Fr. Francisco Combes."
+    "Evidence Found! Lumang manuscript na naglalaman ng sipi mula kila Fr. Francisco Colin at Fr. Francisco Combes."
 
     show jiperson talking at left, shake
     jp "Last Evidence muna sa chapter na ito. May mga later historical accounts at traditions na patuloy na nag-uugnay sa First Mass sa Butuan."
