@@ -55,22 +55,40 @@ init python:
             self.visual = visual
             self.details = details
 
-    ev_butuan_1 = Clue(
+    ev_c1_b1 = Clue(
         "Historical Connection to Butuan",
         "evidences/butuan_1.png",
         "Historical traditions and records have long connected Butuan with Magellan's expedition and First Mass."
     )
     
-    ev_butuan_3 = Clue(
+    ev_c1_b2 = Clue(
         "The Ruler of Butuan",
         "evidences/butuan_3a.png",
         "A ruler associated with Butuan was involved in events surrounding Magellan's expedition."
     )
     
-    ev_butuan_4 = Clue(
+    ev_c1_b3 = Clue(
         "Historical Tradition",
         "evidences/butuan_4.png",
         "Later historical accounts and traditions continued to associate the First Mass with Butuan.\n\nFrom JJ: leb, ang alam ko sakin tong evidence img hahaha, tig-3 evidences lang tayo per chapters."
+    )
+    
+    ev_c2_b1 = Clue(
+        "First Mass Monument",
+        "evidences/butuan_5.png",
+        "Noong 1872, nagtayo ang pamahalaang Kastila at mga prayleng Rekolekto ng isang obelisko malapit sa bunganga ng Agusan River sa Magallanes, Agusan del Norte (dating bahagi ng lumang Butuan)."
+    )
+    
+    ev_c2_b2 = Clue(
+        "Historical Accounts",
+        "evidences/butuan_4.png",
+        "Isinulat ng Heswitang si Padre Colín na itinayo ni Magellan ang krus at idinaos ang Unang Misa sa Butuan bago naglayag patungong Cebu. Samantala, inilarawan naman ni Padre Combés na dumaong si Magellan sa Limasawa, nagtungo sa Butuan upang magtayo ng krus, at muling bumalik sa Limasawa."
+    )
+    
+    ev_c2_b3 = Clue(
+        "Magellan's Expedition",
+        "evidences/butuan_6.png",
+        "Matapos ang pagkamatay ni Magellan sa Mactan, naglayag ang mga natitirang barko sa baybayin ng hilaga at kanlurang Mindanao bago tuluyang tumuloy sa Moluccas."
     )
 
 default inventory = []
@@ -174,6 +192,17 @@ screen examine_clue(clue_item):
             text "[clue_item.name]" size 35 bold True color "#3b2313" xalign 0.5
             add clue_item.visual xalign 0.5 ysize 160 fit "contain"
             text "[clue_item.details]" size 24 text_align 0.5 color "#000000" xmaximum 600 xalign 0.5
+
+screen search_item(evidence, x, y, idle_size, hover_size, hover_img=None):
+    if hover_img is None:
+        $ hover_img = evidence.visual
+
+    if evidence not in inventory:
+        imagebutton:
+            xpos x ypos y
+            idle Transform(evidence.visual, zoom=idle_size)
+            hover Transform(hover_img, zoom=hover_size)
+            action Return("found_clue")
 
 # Game flow
 label start:

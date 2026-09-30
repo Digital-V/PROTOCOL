@@ -1,28 +1,3 @@
-# Search screens
-screen search_museum():
-    if ev_butuan_1 not in inventory:
-        imagebutton:
-            xpos 935 ypos 525
-            idle Transform("evidences/butuan_1.png", zoom=0.025)
-            hover Transform("evidences/butuan_1.png", zoom=0.03)
-            action Return("found_clue")
-
-screen search_agusan():
-    if ev_butuan_3 not in inventory:
-        imagebutton:
-            xpos 1400 ypos 700
-            idle Transform("evidences/butuan_3a.png", zoom=0.0125)
-            hover Transform("evidences/butuan_3b.png", zoom=0.0226)
-            action Return("found_clue")
-
-screen search_shrine():
-    if ev_butuan_4 not in inventory:
-        imagebutton:
-            xpos 653 ypos 630
-            idle Transform("evidences/butuan_4.png", zoom=0.025)
-            hover Transform("evidences/butuan_4.png", zoom=0.03)
-            action Return("found_clue")
-
 label chapter1:
     scene street
     
@@ -91,10 +66,10 @@ label chapter1:
     show jipri normal
     
     window hide 
-    call screen search_museum 
-    $ inventory.append(ev_butuan_1)
+    call screen search_item(ev_c1_b1, 935, 525, 0.025, 0.03)
+    $ inventory.append(ev_c1_b1)
     
-    show screen examine_clue(ev_butuan_1)
+    show screen examine_clue(ev_c1_b1)
     "Evidence Found! Isang lumang 19th century spanish colonial newspaper."
     
     show jipri talking at center, shake
@@ -148,10 +123,10 @@ label chapter1:
     pause 1.0
 
     window hide 
-    call screen search_agusan 
-    $ inventory.append(ev_butuan_3)
+    call screen search_item(ev_c1_b2, 1400, 700, 0.0125, 0.0226, "evidences/butuan_3b.png") 
+    $ inventory.append(ev_c1_b2)
     
-    show screen examine_clue(ev_butuan_3)
+    show screen examine_clue(ev_c1_b2)
     "Evidence Found! 2D Character dossier card of Rajah Siawi."
 
     show jipri talking at center, shake
@@ -211,10 +186,10 @@ label chapter1:
     pause 1.0
 
     window hide 
-    call screen search_shrine
-    $ inventory.append(ev_butuan_4)
+    call screen search_item(ev_c1_b3, 653, 630, 0.025, 0.03)
+    $ inventory.append(ev_c1_b3)
     
-    show screen examine_clue(ev_butuan_4)
+    show screen examine_clue(ev_c1_b3)
     "Evidence Found! Lumang manuscript na naglalaman ng sipi mula kila Fr. Francisco Colin at Fr. Francisco Combes."
 
     show jiperson talking at left, shake
