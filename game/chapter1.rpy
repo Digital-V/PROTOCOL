@@ -1,3 +1,28 @@
+# Search screens
+screen search_museum():
+    if ev_butuan_1 not in inventory:
+        imagebutton:
+            xpos 935 ypos 525
+            idle Transform("evidences/butuan_1.png", zoom=0.025)
+            hover Transform("evidences/butuan_1.png", zoom=0.03)
+            action Return("found_clue")
+
+screen search_agusan():
+    if ev_butuan_3 not in inventory:
+        imagebutton:
+            xpos 1400 ypos 700
+            idle Transform("evidences/butuan_3a.png", zoom=0.0125)
+            hover Transform("evidences/butuan_3b.png", zoom=0.0226)
+            action Return("found_clue")
+
+screen search_shrine():
+    if ev_butuan_4 not in inventory:
+        imagebutton:
+            xpos 653 ypos 630
+            idle Transform("evidences/butuan_4.png", zoom=0.025)
+            hover Transform("evidences/butuan_4.png", zoom=0.03)
+            action Return("found_clue")
+
 label chapter1:
     scene street
     

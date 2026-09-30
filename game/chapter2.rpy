@@ -8,8 +8,8 @@ label chapter2:
     hide text
     with dissolve
 
-    # Evidence 1:
-    scene bg monument
+    # Evidence 1: Monument
+    scene monument
     with fade
 
     show jipri normal:
@@ -64,8 +64,7 @@ label chapter2:
     pause 1.0
 
     # Evidence 2: Historical Accounts
-    # Habang naglalakbay patungo sa kasunod na dako, sa tabing dagat malapit sa port side
-    scene bg tabing_dagat
+    scene seaside_road
     with fade
     
     show judet normal:
@@ -110,8 +109,7 @@ label chapter2:
     pause 1.0
 
     # Evidence 3: Magellan's expedition
-    # tabing dagat malapit sa port side
-    scene bg port_side
+    scene coastal_area
     with fade
 
     show judet normal:

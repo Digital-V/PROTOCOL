@@ -194,7 +194,7 @@ label chapter3:
     pause 3.0
     hide text
     with dissolve
-    scene seaside
+    scene seaside_road
     with fade
     show judet at right
     show jipri at center

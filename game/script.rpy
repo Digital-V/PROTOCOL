@@ -46,6 +46,7 @@ transform walk(position=0.0, time=0.75):
 
     parallel:
         shake(repeat=int(time * 3))
+
 # Evidence
 init python:
     class Clue:
@@ -56,20 +57,20 @@ init python:
 
     ev_butuan_1 = Clue(
         "Historical Connection to Butuan",
-        "evidences/bituanevidence1.png",
+        "evidences/butuan_1.png",
         "Historical traditions and records have long connected Butuan with Magellan's expedition and First Mass."
     )
     
     ev_butuan_3 = Clue(
         "The Ruler of Butuan",
-        "evidences/bitaunevidence3b.png",
+        "evidences/butuan_3a.png",
         "A ruler associated with Butuan was involved in events surrounding Magellan's expedition."
     )
     
     ev_butuan_4 = Clue(
         "Historical Tradition",
-        "evidences/bituanevidence4.png",
-        "Later historical accounts and traditions continued to associate the First Mass with Butuan."
+        "evidences/butuan_4.png",
+        "Later historical accounts and traditions continued to associate the First Mass with Butuan.\n\nFrom JJ: leb, ang alam ko sakin tong evidence img hahaha, tig-3 evidences lang tayo per chapters."
     )
 
 default inventory = []
@@ -149,7 +150,6 @@ screen evidence_menu():
                     else:
                         null width 100
 
-
 screen examine_clue(clue_item):
     modal True 
     
@@ -174,31 +174,6 @@ screen examine_clue(clue_item):
             text "[clue_item.name]" size 35 bold True color "#3b2313" xalign 0.5
             add clue_item.visual xalign 0.5 ysize 160 fit "contain"
             text "[clue_item.details]" size 24 text_align 0.5 color "#000000" xmaximum 600 xalign 0.5
-
-# Search screens
-screen search_museum():
-    if ev_butuan_1 not in inventory:
-        imagebutton:
-            xpos 935 ypos 525
-            idle Transform("bituanevidence1", zoom=0.025)
-            hover Transform("bituanevidence1", zoom=0.03)
-            action Return("found_clue")
-
-screen search_agusan():
-    if ev_butuan_3 not in inventory:
-        imagebutton:
-            xpos 1400 ypos 700
-            idle Transform("bituanevidence3", zoom=0.0125)
-            hover Transform("bitaunevidence3b", zoom=0.0226)
-            action Return("found_clue")
-
-screen search_shrine():
-    if ev_butuan_4 not in inventory:
-        imagebutton:
-            xpos 653 ypos 630
-            idle Transform("bituanevidence4", zoom=0.025)
-            hover Transform("bituanevidence4", zoom=0.03)
-            action Return("found_clue")
 
 # Game flow
 label start:
