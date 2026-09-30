@@ -193,11 +193,21 @@ screen search_shrine():
             hover Transform("bituanevidence4", zoom=0.22)
             action Return("found_clue")
 
-# Chapter 1
+# Game flow
 label start:
-    scene bg town_street
-    
     show screen chapter_info_hud
+
+    call chapter1
+    call chapter2
+    call chapter3
+    call chapter4
+    call chapter5
+
+    return
+
+# Chapter 1
+label chapter1:
+    scene bg town_street
     
     show jiperson talking at left, bounce
     jp "Paano ba yan nandito na tayo sa pag ba-bakasyunan natin para mag explore at maghanap ng evidence para sa First Mass."
