@@ -62,7 +62,7 @@ init python:
     
     ev_butuan_3 = Clue(
         "The Ruler of Butuan",
-        "bituanevidence3.png",
+        "bitaunevidence3b.png",
         "A ruler associated with Butuan was involved in events surrounding Magellan's expedition."
     )
     
@@ -189,7 +189,7 @@ screen search_agusan():
         imagebutton:
             xpos 1400 ypos 700
             idle Transform("bituanevidence3", zoom=0.0125)
-            hover Transform("bituanevidence3", zoom=0.0325)
+            hover Transform("bitaunevidence3b", zoom=0.0226)
             action Return("found_clue")
 
 screen search_shrine():
