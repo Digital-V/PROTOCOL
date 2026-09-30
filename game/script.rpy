@@ -4,33 +4,33 @@ define jr = Character("Jipri", color="#00ffcc")
 define jd = Character("Judet", color="#ff66b2")
 
 image jiperson normal:
-    "jiperson normal.png"
+    "characters/jiperson normal.png"
     zoom 0.2
 image jiperson talking:
-    "jiperson talking.png"
+    "characters/jiperson talking.png"
     zoom 0.2
 image jiperson thinking:
-    "jiperson thinking.png"
+    "characters/jiperson thinking.png"
     zoom 0.2
 
 image jipri normal:
-    "jipri normal.png"
+    "characters/jipri normal.png"
     zoom 0.2
 image jipri talking:
-    "jipri talking.png"
+    "characters/jipri talking.png"
     zoom 0.2
 image jipri thinking:
-    "jipri thinking.png"
+    "characters/jipri thinking.png"
     zoom 0.2
 
 image judet normal:
-    "judet normal.png"
+    "characters/judet normal.png"
     zoom 0.2
 image judet talking:
-    "judet talking.png"
+    "characters/judet talking.png"
     zoom 0.2
 image judet thinking:
-    "judet thinking.png"
+    "characters/judet thinking.png"
     zoom 0.2
 
 # Animations
@@ -56,19 +56,19 @@ init python:
 
     ev_butuan_1 = Clue(
         "Historical Connection to Butuan",
-        "bituanevidence1.png",
+        "evidences/bituanevidence1.png",
         "Historical traditions and records have long connected Butuan with Magellan's expedition and First Mass."
     )
     
     ev_butuan_3 = Clue(
         "The Ruler of Butuan",
-        "bitaunevidence3b.png",
+        "evidences/bitaunevidence3b.png",
         "A ruler associated with Butuan was involved in events surrounding Magellan's expedition."
     )
     
     ev_butuan_4 = Clue(
         "Historical Tradition",
-        "bituanevidence4.png",
+        "evidences/bituanevidence4.png",
         "Later historical accounts and traditions continued to associate the First Mass with Butuan."
     )
 
@@ -83,8 +83,8 @@ screen chapter_info_hud():
     
     imagebutton:
         xalign 0.98 yalign 0.02 
-        idle Transform("BrownNormal18.png", zoom=3.0) 
-        hover Transform("BrownPressed18.png", zoom=3.0) 
+        idle Transform("ui/star_button_normal.png", zoom=3.0) 
+        hover Transform("ui/star_button_pressed.png", zoom=3.0) 
         action Show("evidence_menu")
 
 screen evidence_menu():
@@ -97,7 +97,7 @@ screen evidence_menu():
         action [SetVariable("current_evidence_page", 0), Hide("evidence_menu")]
 
     frame:
-        background Transform("wooden_board.png", size=(1200, 800)) 
+        background Transform("ui/wooden_board.png", size=(1200, 800)) 
         xalign 0.5 yalign 0.5
         xysize (1200, 800) 
         
@@ -160,7 +160,7 @@ screen examine_clue(clue_item):
         action Hide("examine_clue")
 
     frame:
-        background Transform("wooden_board.png", size=(1200, 800)) 
+        background Transform("ui/wooden_board.png", size=(1200, 800)) 
         xalign 0.5 yalign 0.35 
         xysize (1200, 800) 
         

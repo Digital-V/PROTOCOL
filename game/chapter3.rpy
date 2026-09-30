@@ -35,33 +35,33 @@ define judet_ta = Character("Judet", image="judet", callback=make_cb("judet", "t
 define jipri_ta = Character("Jipri", image="jipri", callback=make_cb("jipri", "talking"), what_italic=True)
 define jiperson_ta = Character("Jiperson", image="jiperson", callback=make_cb("jiperson", "talking"), what_italic=True)
 #change each name asset if not identical
-image judet = Transform("judet normal.png", zoom=0.20)
-image judet talking = Transform("judet talking.png", zoom=0.20)
-image judet thinking = Transform("judet thinking.png", zoom=0.20)
-image jipri = Transform("jipri normal.png", zoom=0.20)
-image jipri talking = Transform("jipri talking.png", zoom=0.20)
-image jipri thinking = Transform("jipri thinking.png", zoom=0.20)
-image jiperson = Transform("jiperson normal.png", zoom=0.20)
-image jiperson talking = Transform("jiperson talking.png", zoom=0.20)
-image jiperson thinking = Transform("jiperson thinking.png", zoom=0.20)###
+image judet = Transform("characters/judet normal.png", zoom=0.20)
+image judet talking = Transform("characters/judet talking.png", zoom=0.20)
+image judet thinking = Transform("characters/judet thinking.png", zoom=0.20)
+image jipri = Transform("characters/jipri normal.png", zoom=0.20)
+image jipri talking = Transform("characters/jipri talking.png", zoom=0.20)
+image jipri thinking = Transform("characters/jipri thinking.png", zoom=0.20)
+image jiperson = Transform("characters/jiperson normal.png", zoom=0.20)
+image jiperson talking = Transform("characters/jiperson talking.png", zoom=0.20)
+image jiperson thinking = Transform("characters/jiperson thinking.png", zoom=0.20)###
 
 image evidence_placeholder1 = Fixed(
     Solid("#8a794b", xsize=840, ysize=460),
-    Transform("L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
+    Transform("evidences/L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
     Text("Evidence Obtained: Pigafetta's Account", size=30, color="#060606", xpos=44, ypos=34),
     xsize=840,
     ysize=460
 )
 image evidence_placeholder2 = Fixed(
     Solid("#8a794b", xsize=840, ysize=460),
-    Transform("L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
+    Transform("evidences/L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
     Text("Evidence Obtained: Mazua Identity", size=30, color="#060606", xpos=44, ypos=34),
     xsize=840,
     ysize=460
 )
 image evidence_placeholder3 = Fixed(
     Solid("#8a794b", xsize=840, ysize=460),
-    Transform("L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
+    Transform("evidences/L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
     Text("Evidence Obtained: Geographical Description", size=30, color="#060606", xpos=44, ypos=34),
     xsize=840,
     ysize=460
@@ -69,7 +69,7 @@ image evidence_placeholder3 = Fixed(
 
 image evidence_placeholder4 = Fixed(
     Solid("#8a794b", xsize=840, ysize=460),
-    Transform("L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
+    Transform("evidences/L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
     Text("Evidence Obtained: Two Rulers / Political Context", size=30, color="#060606", xpos=44, ypos=34),
     xsize=840,
     ysize=460
@@ -77,7 +77,7 @@ image evidence_placeholder4 = Fixed(
 
 image evidence_placeholder5 = Fixed(
     Solid("#8a794b", xsize=840, ysize=460),
-    Transform("L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
+    Transform("evidences/L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
     Text("Evidence Obtained: Primary Sources vs. Later Tradition", size=30, color="#060606", xpos=44, ypos=34),
     xsize=840,
     ysize=460
