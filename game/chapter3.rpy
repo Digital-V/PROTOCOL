@@ -35,13 +35,13 @@ define judet_ta = Character("Judet", image="judet", callback=make_cb("judet", "t
 define jipri_ta = Character("Jipri", image="jipri", callback=make_cb("jipri", "talking"), what_italic=True)
 define jiperson_ta = Character("Jiperson", image="jiperson", callback=make_cb("jiperson", "talking"), what_italic=True)
 #change each name asset if not identical
-image judet = Transform("judet.png", zoom=0.20)
+image judet = Transform("judet normal.png", zoom=0.20)
 image judet talking = Transform("judet talking.png", zoom=0.20)
 image judet thinking = Transform("judet thinking.png", zoom=0.20)
-image jipri = Transform("jipri.png", zoom=0.20)
+image jipri = Transform("jipri normal.png", zoom=0.20)
 image jipri talking = Transform("jipri talking.png", zoom=0.20)
 image jipri thinking = Transform("jipri thinking.png", zoom=0.20)
-image jiperson = Transform("jiperson.png", zoom=0.20)
+image jiperson = Transform("jiperson normal.png", zoom=0.20)
 image jiperson talking = Transform("jiperson talking.png", zoom=0.20)
 image jiperson thinking = Transform("jiperson thinking.png", zoom=0.20)###
 
