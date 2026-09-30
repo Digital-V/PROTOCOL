@@ -180,25 +180,25 @@ screen examine_clue(clue_item):
 screen search_museum():
     if ev_butuan_1 not in inventory:
         imagebutton:
-            xpos 400 ypos 300 
-            idle Transform("bituanevidence1", zoom=0.2)
-            hover Transform("bituanevidence1", zoom=0.22)
+            xpos 935 ypos 525
+            idle Transform("bituanevidence1", zoom=0.025)
+            hover Transform("bituanevidence1", zoom=0.03)
             action Return("found_clue")
 
 screen search_agusan():
     if ev_butuan_3 not in inventory:
         imagebutton:
-            xpos 200 ypos 450
-            idle Transform("bituanevidence3", zoom=0.2)
-            hover Transform("bituanevidence3", zoom=0.22)
+            xpos 1400 ypos 700
+            idle Transform("bituanevidence3", zoom=0.0125)
+            hover Transform("bituanevidence3", zoom=0.0325)
             action Return("found_clue")
 
 screen search_shrine():
     if ev_butuan_4 not in inventory:
         imagebutton:
-            xpos 600 ypos 200
-            idle Transform("bituanevidence4", zoom=0.2)
-            hover Transform("bituanevidence4", zoom=0.22)
+            xpos 653 ypos 630
+            idle Transform("bituanevidence4", zoom=0.025)
+            hover Transform("bituanevidence4", zoom=0.03)
             action Return("found_clue")
 
 # Game flow

@@ -1,5 +1,5 @@
 label chapter1:
-    scene bg town_street
+    scene street
     
     show jiperson normal:
         offscreenleft
@@ -52,7 +52,7 @@ label chapter1:
     show judet normal at walk(position=-0.5, time=2.5)
     pause 2.5
 
-    scene bg museum
+    scene museum
     with fade
 
     show jipri normal:
@@ -60,7 +60,7 @@ label chapter1:
         walk(position=0.5)
     pause 1.0
 
-    show jipri talking at center, shake
+    show jipri talking at right, shake
     jr "Nandito na tayo sa museum para makakita ng pang unang evidence. O ito na pala pang unang evidence para saatin."
 
     show jipri normal
@@ -96,7 +96,7 @@ label chapter1:
     show judet normal at walk(position=-0.5, time=2.5)
     pause 2.5
 
-    scene bg agusan_river
+    scene agusan_river
     with fade
 
     show jiperson normal:
@@ -159,7 +159,7 @@ label chapter1:
     show judet normal at walk(position=-0.5, time=2.5)
     pause 2.5
 
-    scene bg balanghai_shrine
+    scene balanghai_shrine
     with fade
 
     show jiperson normal:
