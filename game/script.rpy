@@ -82,7 +82,7 @@ init python:
     ev_c2_b2 = Clue(
         "Historical Accounts",
         "evidences/butuan_4.png",
-        "Isinulat ng Heswitang si Padre Colín na itinayo ni Magellan ang krus at idinaos ang Unang Misa sa Butuan bago naglayag patungong Cebu. Samantala, inilarawan naman ni Padre Combés na dumaong si Magellan sa Limasawa, nagtungo sa Butuan upang magtayo ng krus, at muling bumalik sa Limasawa."
+        "Isinulat ng Heswitang si Padre Colín na itinayo ni Magellan ang krus at idinaos ang Unang Misa sa Butuan bago naglayag patungong Cebu."
     )
     
     ev_c2_b3 = Clue(
@@ -208,7 +208,7 @@ screen search_item(evidence, x, y, idle_size, hover_size, hover_img=None):
 label start:
     show screen chapter_info_hud
 
-    call chapter1
+    # call chapter1
     call chapter2
     call chapter3
     call chapter4

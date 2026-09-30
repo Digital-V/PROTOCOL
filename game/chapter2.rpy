@@ -1,3 +1,5 @@
+default isTeamLimasawa = False
+
 label chapter2:
     scene black
     with fade
@@ -33,7 +35,14 @@ label chapter2:
     show jipri talking at shake
     jipri "Tama. base sa history ay itinayo ito ng mga prayleng rekolekto noong 1872 upang igunita ang unang Misa na nangyari noong Abril 8, 1521."
 
-    # prompt the screen (wait lang, dito ko ilalagay yung examine the evidence, magrereview lang ako)
+    window hide 
+    call screen search_item(ev_c2_b1, 1000, 700, 0.025, 0.03)
+    $ inventory.append(ev_c2_b1)
+    
+    show screen examine_clue(ev_c2_b1)
+    "Evidence Found! Archival photograph or blueprint sketch ng monumentong itinayo sa Magallanes noong 1872.{nw}"
+    
+    hide screen examine_clue
     
     show jipri normal
     show judet normal at walk(position=0.85)
@@ -88,7 +97,15 @@ label chapter2:
     show jipri thinking at shake
     jipri "Hmm, kung 'di ako nagkakamali, may isinulat si Padre Colin, isang hesuwistang misyonaryo na naglimbag ng Labor Evangelica. Base sa kanyang ang Unang Misa mismo ay dito sa Butuan. Heto, mayro'n akong kopya kung gusto mo makita."
 
-    # prompt the screen (dito ko ilalagay yung examine the evidence)
+    window hide 
+    call screen search_item(ev_c2_b2, 780, 800, 0.05, 0.055)
+    $ inventory.append(ev_c2_b2)
+    
+    show screen examine_clue(ev_c2_b2)
+    "Evidence Found! Lumang manuscript na naglalaman ng sipi (random squilggly lines) mula kila Fr. Francisco Colin (1663) at Fr. Francisco Combes (1667).{nw}"
+    
+    hide screen examine_clue 
+    pause 1.0
     
     show jipri normal 
     show jiperson talking at shake
@@ -154,8 +171,16 @@ label chapter2:
     show jiperson normal
     show jipri talking at shake
     jipri "Tunay, tunay. Base sa kanilang paglalayag, ang mga natitirang barko ay tumungo sa baybayin ng hilaga at kanluran ng Mindanao."
+
+    window hide 
+    call screen search_item(ev_c2_b3, 150, 750, 0.05, 0.06)
+    $ inventory.append(ev_c2_b3)
     
-    # prompt the screen
+    show screen examine_clue(ev_c2_b3)
+    "Evidence Found! 2D parchment of a nautical map na nagpapakita ng waypoints at ruta around northwestern side ng Mindanao.{nw}"
+    
+    hide screen examine_clue 
+    pause 1.0
     
     show jipri normal
     show judet talking at shake
@@ -169,7 +194,34 @@ label chapter2:
     show jipri talking at shake
     jipri "Ayang nakikita nyo ay ang kanilang ruta tungo rito sa Butuan."
 
-    # may continuation pa ng conclusion dito, di ko pa muna maiaadd, need ko pa mag-review huhuu
-    "JJ (The Legend)" "More parts will be added here..."
+    show jipri normal
+    show judet talking at shake
+    judet "Hmm, napaka-convincing ng mga ebidensyang nakita natin at kung ako ay magiging totoo sa inyo, hindi ko rin maiwasan na maisip na rito talaga nangyari ang unang misa. Ikaw Jiperson, ano sa tingin mo?"
+
+    menu:
+        "BUTUAN":
+            $ isTeamLimasawa = False
+            show judet thinking at shake
+            judet "Hindi kita masisisi, talagang malakas ang mga ebidensyang nakita natin."
+        "LIMASAWA":
+            $ isTeamLimasawa = True
+            show judet thinking at shake
+            judet "Oh? Talagang di ka magpapatinag sa kabila ng mga 'yon, mainam yan na nagtitiwala ka at pinanghahawakan mo ang iyong pinaniniwalaan."
+
+    show judet normal
+    show jipri talking at shake
+    jipri "O sya, dako naman tayo sa susunod na lugar at panigurado mas magugustuhan nyo roon!"
+
+    show judet normal at  walk(position=1.5, time=4)
+    show jiperson normal at walk(position=1.5, time=3)
+    show jipri normal at walk(position=1.5, time=2)
+
+    pause 1.0
+    
+    show text "{size=76}END OF CHAPTER 2{/size}" at truecenter
+    with dissolve
+    pause 2.0
+    hide text
+    with dissolve
 
     return
