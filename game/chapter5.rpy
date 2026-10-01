@@ -1,7 +1,7 @@
-image nhcp_document = Transform("evidences/limasawa_10.png", xysize = (400, 350), fit = "contain")
+image nhcp_document ="evidences/limasawa_10.png", xysize = (400, 350), fit = "contain")
 
 transform nhcp_pop:
-    xalign 07.5
+    xalign 0.75
     yalign 0.5
     alpha 0.0
     zoom 0.9
