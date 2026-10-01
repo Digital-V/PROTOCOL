@@ -1,14 +1,14 @@
-image nhcp_document = ("evidences/limasawa_10.png", xysize=(400, 350), fit = "contain")
+image nhcp_document = "evidences/limasawa_10.png"
 
 transform nhcp_pop:
-    xalign 0.75
-    yalign 0.5
+    xalign 0.72
+    yalign 0.45
     alpha 0.0
-    zoom 0.9
+    zoom 0.4
     parallel:
         ease 0.4 alpha 1.0
     parallel:
-        ease 0.4 zoom 1.0
+        ease 0.4 zoom 0.45
 #Start
 label chapter5:
 
