@@ -1,14 +1,14 @@
 image nhcp_document = "evidences/limasawa_10.png"
 
 transform nhcp_pop:
-    xalign 0.72
-    yalign 0.45
+    xalign 0.12
+    yalign 0.65
     alpha 0.0
-    zoom 0.4
+    zoom 0.1
     parallel:
         ease 0.4 alpha 1.0
     parallel:
-        ease 0.4 zoom 0.45
+        ease 0.4 zoom 0.15
 #Start
 label chapter5:
 
@@ -44,7 +44,7 @@ label chapter5:
     jipri_ta "Kaya naman, upang matigil na, ay nagsagawa ang sangay ng gobyerno, National Historical Commission of the Philippines, ng panels na binubuo ng mga eksperto sa larangang pangkasaysayan ng Pinas."
 
     # NHCP evidence
-    show nhcp_document  at nhcp_pop
+    show nhcp_document  at nhcp_pop zorder 0
     jipri_ta "At ang naging desisyon nila? Batay sa mga lumang tala at ebidensya, pinanindigan ng NHCP na sa Limasawa talaga naganap ang Unang Misa."
 
     hide nhcp_document
