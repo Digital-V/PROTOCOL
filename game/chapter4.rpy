@@ -1,70 +1,3 @@
-define jiperson = Character("Jiperson", image="jiperson", color="#ffcc00")
-define jipri = Character("Jipri", image="jipri", color="#00ffcc")
-define judet = Character("Judet", image="judet", color="#ff66b2")
-
-default historical_choice = None
-
-#Place holdes satrt can be deleted later when assets are ready.
-image bg placeholder_coastal_area = Fixed(
-    Solid("#18343a", xsize=1920, ysize=1080),
-    Solid("#315c58", xsize=1920, ysize=250, ypos=830),
-    Solid("#c18a55", xsize=1920, ysize=8, ypos=828),
-    Solid("#0006", xsize=1920, ysize=1080),
-    Text("COASTAL EXPEDITION ROUTE", size=54, color="#f3e6c8", xalign=0.5, ypos=100),
-    Text("BUTUAN  /  RECORDED ROUTE  /  LIMASAWA", size=30, color="#d9d1b7", xalign=0.5, ypos=180),
-    xsize=1920,
-    ysize=1080
-)
-
-image bg placeholder_limasawa_island = Fixed(
-    Solid("#234951", xsize=1920, ysize=1080),
-    Solid("#38727a", xsize=1920, ysize=260, ypos=820),
-    Solid("#9b9b70", xsize=520, ysize=115, xalign=0.5, ypos=705),
-    Solid("#0006", xsize=1920, ysize=1080),
-    Text("LIMASAWA ISLAND", size=56, color="#f3e6c8", xalign=0.5, ypos=100),
-    Text("ISLAND DESCRIPTION", size=30, color="#d9d1b7", xalign=0.5, ypos=180),
-    xsize=1920,
-    ysize=1080
-)
-
-image bg placeholder_limasawa_shrine = Fixed(
-    Solid("#253c35", xsize=1920, ysize=1080),
-    Solid("#526a4e", xsize=1920, ysize=250, ypos=830),
-    Solid("#b98b58", xsize=1920, ysize=8, ypos=828),
-    Solid("#0006", xsize=1920, ysize=1080),
-    Text("LIMASAWA SHRINE", size=56, color="#f3e6c8", xalign=0.5, ypos=100),
-    Text("HISTORICAL INVESTIGATION SITE", size=30, color="#d9d1b7", xalign=0.5, ypos=180),
-    xsize=1920,
-    ysize=1080
-)
-
-image investigation_board_placeholder = Fixed(
-    Solid("#e4d8b8", xsize=840, ysize=460),
-    Solid("#a94f3d", xsize=840, ysize=12),
-    Text("INVESTIGATION BOARD", size=42, color="#20343a", xpos=44, ypos=34),
-    xsize=840,
-    ysize=460
-)
-#Place holder end can be deleted later when assets are ready.
-
-
-#Just make things and assets centered on the screeen.
-transform stage_left:
-    xalign 0.15
-    yalign 1.0
-
-transform stage_center:
-    xalign 0.5
-    yalign 1.0
-
-transform stage_right:
-    xalign 0.85
-    yalign 1.0
-
-transform investigation_board_center:
-    xalign 0.5
-    yalign 0.42
-
 label chapter4:
 
     scene black
@@ -76,25 +9,31 @@ label chapter4:
     hide text
     with dissolve
 
-    scene bg placeholder_coastal_area
+    scene coastal_area2
     with fade
 
     # EVIDENCE 1: EXPEDITION ROUTE
-    show jipri normal:
-        offscreenleft
-        walk(position=0.15, time=2)
-    show jiperson normal:
-        offscreenleft
-        walk(position=0.5, time=3)
-    show judet normal:
-        offscreenright
-        walk(position=0.85, time=2)
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.15, time=2)
+    show jiperson normal at offscreenleft
+    show jiperson normal at walk(position=0.5, time=3)
+    show judet normal at offscreenright
+    show judet normal at walk(position=0.85, time=2)
     pause 3.0
 
-    jiperson @ talking "So ito na ba yung route ng expedition?"
-    jipri @ talking "Oo. Kailangan nating ikumpara ang recorded route sa lugar na pinagpipilian natin. Sa Butuan o Limasawa."
-    judet @ thinking "So paano kung hindi tugma yung location sa route, ibig sabihin ba questionable na yung claim?"
-    jipri @ talking "Tama."
+    jiperson_ta "So ito na ba yung route ng expedition?"
+    jipri_ta "Oo. Kailangan nating ikumpara ang recorded route sa lugar na pinagpipilian natin. Sa Butuan o Limasawa."
+    
+    window hide 
+    call screen search_item(ev_c3_b4, 1400, 665, 0.035, 0.045)
+    $ inventory.append(ev_c3_b4)
+    
+    show screen examine_clue(ev_c3_b4)
+    "Evidence Found! Expedition Route map comparing Butuan and Limasawa."
+    hide screen examine_clue
+
+    judet_ti "So paano kung hindi tugma yung location sa route, ibig sabihin ba questionable na yung claim?"
+    jipri_ta "Tama."
 
     show jipri normal at walk(position=-0.5, time=1.5)
     show jiperson normal at walk(position=-0.5, time=2)
@@ -106,22 +45,31 @@ label chapter4:
     hide judet
 
     # EVIDENCE 2: DISTANCE AND DIRECTION
-    show jipri normal:
-        offscreenleft
-        walk(position=0.15, time=2)
-    show jiperson normal:
-        offscreenleft
-        walk(position=0.5, time=3)
-    show judet normal:
-        offscreenright
-        walk(position=0.85, time=2)
+    scene seaside_road
+    with fade
+
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.15, time=2)
+    show jiperson normal at offscreenleft
+    show jiperson normal at walk(position=0.5, time=3)
+    show judet normal at offscreenright
+    show judet normal at walk(position=0.85, time=2)
     pause 3.0
 
-    judet @ talking "May compass at distance markers dito."
-    jipri @ talking "Gagamitin natin yung recorded directions at distances bilang clues."
-    jiperson @ thinking "So hindi lang kung saan sila pumunta, pati na rin kung gaano kalayo at anong direksyon."
-    judet @ thinking "Hmmm... and kapag pinagsama natin yung route, distance, at direction..."
-    jipri @ talking "...mas makikita natin kung alin ang mas consistent."
+    judet_ta "May compass at distance markers dito."
+    
+    window hide 
+    call screen search_item(ev_c3_b5, 1680, 850, 0.025, 0.035)
+    $ inventory.append(ev_c3_b5)
+    
+    show screen examine_clue(ev_c3_b5)
+    "Evidence Found! Distance and Direction compass markers."
+    hide screen examine_clue
+
+    jipri_ta "Gagamitin natin yung recorded directions at distances bilang clues."
+    jiperson_ti "So hindi lang kung saan sila pumunta, pati na rin kung gaano kalayo at anong direksyon."
+    judet_ti "Hmmm... and kapag pinagsama natin yung route, distance, at direction..."
+    jipri_ta "...mas makikita natin kung alin ang mas consistent."
 
     show jipri normal at walk(position=-0.5, time=1.5)
     show jiperson normal at walk(position=-0.5, time=2)
@@ -133,27 +81,33 @@ label chapter4:
     hide judet
 
     # EVIDENCE 3: ISLAND DESCRIPTION
-    scene bg placeholder_limasawa_island
+    scene museum
     with dissolve
 
-    show jipri normal:
-        offscreenleft
-        walk(position=0.15, time=2)
-    show jiperson normal:
-        offscreenleft
-        walk(position=0.5, time=3)
-    show judet normal:
-        offscreenright
-        walk(position=0.85, time=2)
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.15, time=2)
+    show jiperson normal at offscreenleft
+    show jiperson normal at walk(position=0.95, time=3)
+    show judet normal at offscreenright
+    show judet normal at walk(position=0.80, time=2)
     pause 3.0
 
-    jiperson @ talking "Wait, nasa Limasawa tayo?"
-    jipri @ talking "Oo."
-    judet @ talking "Ibig sabihin pwede natin ma-check dito yung ibang descriptions ng Mazaua?"
-    jipri @ talking "Sa account ni Pigafetta, ang Mazaua ay inilarawan bilang isang isla."
-    jiperson @ talking "And Limasawa is an island."
-    judet @ thinking "Pero sabi mo kanina, hindi sapat ang isang evidence."
-    jiperson @ talking "Correct. Kaya kailangan pa rin natin i-connect sa route, distance, direction, at sa original account."
+    jiperson_ta "Wait, nasa Limasawa tayo?"
+    jipri_ta "Oo."
+    judet_ta "Ibig sabihin pwede natin ma-check dito yung ibang descriptions ng Mazua?"
+    
+    window hide 
+    call screen search_item(ev_c3_b6, 960, 525, 0.025, 0.03)
+    $ inventory.append(ev_c3_b6)
+    
+    show screen examine_clue(ev_c3_b6)
+    "Evidence Found! Island Description showing mountains and shoreline."
+    hide screen examine_clue
+
+    jipri_ta "Sa account ni Pigafetta, ang Mazua ay inilarawan bilang isang isla."
+    jiperson_ta "And Limasawa is an island."
+    judet_ti "Pero sabi mo kanina, hindi sapat ang isang evidence."
+    jiperson_ta "Correct. Kaya kailangan pa rin natin i-connect sa route, distance, direction, at sa original account."
 
     show jipri normal at walk(position=-0.5, time=1.5)
     show jiperson normal at walk(position=-0.5, time=2)
@@ -164,37 +118,33 @@ label chapter4:
     hide jipri
     hide judet
 
-
     # EVIDENCE 4: HISTORICAL INVESTIGATION
-    scene bg placeholder_limasawa_shrine
+    scene library
     with dissolve
 
-    show jipri normal:
-        offscreenleft
-        walk(position=0.15, time=2)
-    show jiperson normal:
-        offscreenleft
-        walk(position=0.5, time=3)
-    show judet normal:
-        offscreenright
-        walk(position=0.85, time=2)
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.15, time=2)
+    show jiperson normal at offscreenleft
+    show jiperson normal at walk(position=0.5, time=3)
+    show judet normal at offscreenright
+    show judet normal at walk(position=0.85, time=2)
     pause 3.0
 
-    judet @ talking "Ito na ba yung shrine?"
+    judet_ta "Ito na ba yung shrine at investigation board?"
+    jipri_ta "Oo. At dito natin pagsasama-samahin ang lahat."
 
-    jipri @ talking "Oo. At dito natin pagsasama-samahin ang lahat."
+    window hide 
+    call screen search_item(ev_c3_b9, 90, 630, 0.05, 0.06)
+    $ inventory.append(ev_c3_b9)
+    
+    show screen examine_clue(ev_c3_b9)
+    "Evidence Found! Historical Investigation board connecting all clues to Limasawa."
+    hide screen examine_clue
 
-    # Investigation board placeholder
-    show investigation_board_placeholder at investigation_board_center
-    with dissolve
-
-    # Optional pause for the player to examine the board
-    pause
-
-    jiperson @ thinking "Kapag pinag-connect natin lahat..."
-    judet @ talking "Mas nag-lead sa Limasawa."
-    jipri @ talking "Hmm... Pero kailangan nating tandaan na hindi lamang isang evidence ang nagbigay sa atin ng conclusion."
-    jipri @ talking "So, after reviewing all the evidence, which side are you guys?"
+    jiperson_ti "Kapag pinag-connect natin lahat..."
+    judet_ta "Mas nag-lead sa Limasawa."
+    jipri_ta "Hmm... Pero kailangan nating tandaan na hindi lamang isang evidence ang nagbigay sa atin ng conclusion."
+    jipri_ta "So, after reviewing all the evidence, which side are you guys?"
 
     # PLAYER CHOICE
     menu:
@@ -206,11 +156,10 @@ label chapter4:
             jump chapter4_choice_result
 
 label chapter4_choice_result:
-    # REGARDLESS OF CHOICE
-    jipri @ talking "Interesting. Pero hindi pa tapos ang investigation."
-    judet @ talking "Bakit? May kulang pa ba na evidence?"
-    jipri @ talking "Meron."
-    jipri @ talking "At dito natin malalaman kung ano ang naging conclusion kung Butuan ba o Limasawa."
+    jipri_ta "Interesting. Pero hindi pa tapos ang investigation."
+    judet_ta "Bakit? May kulang pa ba na evidence?"
+    jipri_ta "Meron."
+    jipri_ta "At dito natin malalaman kung ano ang naging conclusion kung Butuan ba o Limasawa."
 
     scene black
     with fade
