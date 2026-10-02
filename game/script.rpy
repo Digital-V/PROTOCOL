@@ -91,7 +91,6 @@ transform undim:
     yoffset 0
     matrixcolor BrightnessMatrix(0.0)
 
-<<<<<<< HEAD
 transform frickme:
     matrixcolor ColorizeMatrix("#fff", "#fff")
     alpha 0.0
@@ -102,7 +101,6 @@ transform frickme:
         repeat
 
 # Evidence
-=======
 transform side_tab_transform:
     xalign 1.0
     yalign 0.5
@@ -146,7 +144,6 @@ style evidence_scroll_vscrollbar:
     top_gutter 0
     bottom_gutter 0
 
->>>>>>> 72d51a1 (Completed Ch1, 3, 4)
 init python:
     class Clue:
         def __init__(self, name, visual, details):
