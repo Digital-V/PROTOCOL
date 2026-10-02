@@ -56,7 +56,7 @@ label chapter5:
 
     scene black
     with fade
-    centered "{size=50}END OF CHAPTER 5.{/size}"
+    centered "{size=50}THANK YOU FOR PLAYING{/size}"
     pause 2.0
 
     return
