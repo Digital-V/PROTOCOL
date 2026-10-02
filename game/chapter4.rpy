@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-label chapter4:
-    $ current_chapter = 4
-    
-=======
+$ current_chapter = 4
 image c4_ev2 = "evidences/limasawa_5.png"
 image c4_ev3 = "evidences/limasawa_6b.png"
 image c4_ev4 = "evidences/limasawa_9.png"
 
 label chapter4:
->>>>>>> 627fbbc9cbf11abf21b48c24ee9e99ec0a66f915
     scene black
     with fade
 

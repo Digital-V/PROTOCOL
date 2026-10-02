@@ -1,19 +1,10 @@
-<<<<<<< HEAD
-label chapter1:
-    $ current_chapter = 1
-    
-    scene street
-    
-    show jiperson normal at offscreenleft
-    show jiperson normal at walk(position=0.0)
-    pause 1.0
-=======
 image c1_ev1 = "evidences/butuan_1.png"
 image c1_ev2 = "evidences/butuan_3a.png"
 image c1_ev3 = "evidences/butuan_2b.png"
->>>>>>> 627fbbc9cbf11abf21b48c24ee9e99ec0a66f915
 
 label chapter1:
+    $ current_chapter = 1
+
     scene black
     with fade
 
@@ -69,15 +60,15 @@ label chapter1:
     pause 2.0
 
     jipri_ta "Nandito na tayo sa museum para makakita ng pang unang evidence. O ito na pala pang unang evidence para saatin."
-    show jipri normal at walk(position=0.1)
-
+    
+    show jipri normal at walk(position=0.1, time=0.6)
+    pause 0.6
 
     window hide 
     hide c1_ev1
     call screen search_item(ev_c1_b1, 935, 525, 0.025, 0.03)
     $ inventory.append(ev_c1_b1)
     call screen examine_clue(ev_c1_b1)
-    
     
     jipri_ta "May matagal nang historical tradition na nag uugnay sa Butuan sa expedition ni Magellan at sa First Mass."
     jipri_ta "So matagal na palang may connection ang Butuan sa First Mass."
