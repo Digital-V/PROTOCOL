@@ -208,7 +208,7 @@ screen search_item(evidence, x, y, idle_size, hover_size, hover_img=None):
 label start:
     show screen chapter_info_hud
 
-    # call chapter1
+    call chapter1
     call chapter2
     call chapter3
     call chapter4
