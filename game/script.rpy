@@ -79,12 +79,12 @@ transform shake(repeat=2):
     easeout 0.1 yoffset 0
     repeat repeat
 
-transform walk(position=0.0, time=0.75):
+transform walk(position=0.0, time=1.0):
     parallel:
         ease time xalign position
 
     parallel:
-        shake(repeat=int(time * 3))
+        shake(repeat=int(time * 5))
 
 transform dim:
     yoffset 0
