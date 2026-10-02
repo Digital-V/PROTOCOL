@@ -1,5 +1,6 @@
-﻿# Characters
-init python:
+﻿init python:
+    config.default_text_cps = 50  
+
     TAGS = ["jiperson", "jipri", "judet"]
 
     def make_cb(tag, mood="talking"):
@@ -24,17 +25,14 @@ init python:
                         renpy.show((t, "normal"), at_list=[renpy.store.undim])
         return cb
 
-# Base Character Definitions (Fixes "Sayer is not defined" error)
 define jiperson = Character("Jiperson", color="#ffcc00")
 define jipri = Character("Jipri", color="#00ffcc")
 define judet = Character("Judet", color="#ff66b2")
 
-# Short aliases if used elsewhere
 define jp = Character("Jiperson", color="#ffcc00")
 define jr = Character("Jipri", color="#00ffcc")
 define jd = Character("Judet", color="#ff66b2")
 
-# Callback-based character variants for talking/thinking animations
 define jiperson_ta = Character("Jiperson", color="#ffcc00", callback=make_cb("jiperson", "talking"))
 define jiperson_ti = Character("Jiperson", color="#ffcc00", callback=make_cb("jiperson", "thinking"), what_italic=True)
 define jipri_ta = Character("Jipri", color="#00ffcc", callback=make_cb("jipri", "talking"))
@@ -72,7 +70,6 @@ image judet thinking:
     "characters/judet thinking.png"
     zoom 0.2
 
-# Animations
 transform shake(repeat=2):
     yoffset 0
     easein 0.1 yoffset 20
@@ -94,6 +91,7 @@ transform undim:
     yoffset 0
     matrixcolor BrightnessMatrix(0.0)
 
+<<<<<<< HEAD
 transform frickme:
     matrixcolor ColorizeMatrix("#fff", "#fff")
     alpha 0.0
@@ -104,6 +102,51 @@ transform frickme:
         repeat
 
 # Evidence
+=======
+transform side_tab_transform:
+    xalign 1.0
+    yalign 0.5
+    anchor (1.0, 0.5)
+    zoom 2.0
+    xoffset -25
+    on hover:
+        easein 0.15 xoffset -30 zoom 2.15
+    on idle:
+        easeout 0.15 xoffset -25 zoom 2.0
+
+style namebox:
+    xpos gui.name_xpos
+    xanchor gui.name_xalign
+    xsize gui.namebox_width
+    ysize gui.namebox_height
+    ypos -75
+    yanchor 0.5
+    padding gui.namebox_borders.padding
+    background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
+
+style say_dialogue:
+    properties gui.text_properties("dialogue")
+    xpos gui.dialogue_xpos
+    xsize gui.dialogue_width
+    ypos 20
+
+style choice_vbox:
+    xalign 0.5
+    yalign 0.85
+    yanchor 0.5
+
+    spacing gui.choice_spacing
+
+# Properly sliced Frame for the scrollbar thumb asset
+style evidence_scroll_vscrollbar:
+    base_bar Frame("#00000011", 2, 2)
+    thumb Frame("ui/scrollbar.png", 2, 6)
+    xminimum 8
+    yminimum 30
+    top_gutter 0
+    bottom_gutter 0
+
+>>>>>>> 72d51a1 (Completed Ch1, 3, 4)
 init python:
     class Clue:
         def __init__(self, name, visual, details):
@@ -111,7 +154,6 @@ init python:
             self.visual = visual
             self.details = details
 
-    # Chapter 1 Evidences
     ev_c1_b1 = Clue(
         "Historical Connection to Butuan",
         "evidences/butuan_1.png",
@@ -126,11 +168,10 @@ init python:
     
     ev_c1_b3 = Clue(
         "Butuan's Importance",
-        "evidences/butuan_2.png",
+        "evidences/butuan_2a.png",
         "Ang Butuan ay isang kilala at mayamang pamayanan sa Mindanao na tanyag sa paggawa ng ginto, paggawa ng malalaking sasakyang-pandagat (balangay), at pakikipagkalakalan sa mga karatig-bansa sa Asya. Ipinapakita nito na may makatwirang dahilan ang mga Kastila na puntahan at hanapin ang Butuan para kumuha ng suplay at makipagkalakalan."
     )
     
-    # Chapter 2 Evidences
     ev_c2_b1 = Clue(
         "First Mass Monument",
         "evidences/butuan_5.png",
@@ -149,10 +190,9 @@ init python:
         "Matapos ang pagkamatay ni Magellan sa Mactan, naglayag ang mga natitirang barko sa baybayin ng hilaga at kanlurang Mindanao bago tuluyang tumuloy sa Moluccas."
     )
 
-    # Chapter 3 & 4 Evidences
     ev_c3_b1 = Clue(
         "Pigafetta’s Account",
-        "evidences/limasawa_1.png",
+        "evidences/limasawa_1b.png",
         "Ang account ni Antonio Pigafetta ay mahalagang primary source dahil kasama siya sa expedition ni Magellan at isinulat niya ang mga pangyayari sa kanilang paglalakbay. Sa kanyang account, binanggit niya ang lugar na tinawag na Mazaua, kung saan ginanap ang Easter Sunday Mass noong March 31, 1521."
     )
     
@@ -194,7 +234,7 @@ init python:
     
     ev_c3_b8 = Clue(
         "Primary Sources vs. Later Tradition",
-        "evidences/limasawa_8.png",
+        "evidences/limasawa_8b.png",
         "Sinusuri kung gaano na katagal ang bawat source at kung ano mismo ang nakapaloob sa source na iyon. Ang original account ni Pigafetta ay gumagamit ng pangalang Mazua, habang ang ilang sumunod na interpretations ay naugnay sa Butuan."
     )
     
@@ -206,7 +246,6 @@ init python:
 
 default inventory = []
 
-# UI screens
 default show_chapter_info = False
 default current_evidence_page = 0
 
@@ -214,9 +253,9 @@ screen chapter_info_hud():
     zorder 100 
     
     imagebutton:
-        xalign 0.98 yalign 0.02 
-        idle Transform("ui/star_button_normal.png", zoom=3.0) 
-        hover Transform("ui/star_button_pressed.png", zoom=3.0) 
+        at side_tab_transform
+        idle "ui/star_button_normal.png" 
+        hover "ui/star_button_pressed.png" 
         action Show("evidence_menu")
 
 screen evidence_menu():
@@ -233,51 +272,64 @@ screen evidence_menu():
         xalign 0.5 yalign 0.5
         xysize (1200, 800) 
         
-        # Frame padding
-        padding (260, 220, 260, 200)
+        padding (180, 210, 180, 110)
 
         vbox:
             spacing 15
             xfill True
             
-            # Headers
+            null height 10
+            
+            # Centered Header
             vbox:
                 xalign 0.5
-                spacing 5
-                text "Evidence Log" size 40 bold True color "#3b2313" xalign 0.5
-                text "[len(inventory)] Collected" size 24 color "#3b2313" xalign 0.5
+                spacing 2
+                text "Evidence Log" size 34 bold True color "#3b2313" xalign 0.5
+                text "[len(inventory)] Collected" size 20 color "#3b2313" xalign 0.5
             
-            null height 10
+            null height 5
             
             if len(inventory) == 0:
                 text "No evidence collected yet." size 30 color "#555555" xalign 0.5 yalign 0.5
             else:
                 $ current_clue = inventory[current_evidence_page]
                 
+                # Side-by-side content layout
                 hbox:
-                    spacing 25
-                    add current_clue.visual ysize 160 fit "contain"
+                    spacing 30
+                    xalign 0.5
+                    yalign 0.0
+                    add current_clue.visual ysize 150 fit "contain" yalign 0.0
                     
                     vbox:
-                        spacing 5
-                        text "[current_clue.name]" size 28 bold True color "#3b2313"
-                        text "[current_clue.details]" size 20 xmaximum 400 color "#000000"
+                        spacing 8
+                        text "[current_clue.name]" size 24 bold True color "#3b2313"
+                        
+                        style_prefix "evidence_scroll"
+                        viewport:
+                            scrollbars "vertical"
+                            mousewheel True
+                            xysize (460, 130)
+                            vbox:
+                                text "[current_clue.details]" size 18 line_spacing 3 color "#1a1107" xmaximum 440
 
+            null height 10
+
+            # Bottom pagination
             if len(inventory) > 1:
-                null height 15
                 hbox:
                     xalign 0.5
                     spacing 50
                     
                     if current_evidence_page > 0:
-                        textbutton "< Back" action SetVariable("current_evidence_page", current_evidence_page - 1) text_color "#3b2313" text_hover_color "#FFD700" text_size 28
+                        textbutton "< Back" action SetVariable("current_evidence_page", current_evidence_page - 1) text_color "#3b2313" text_hover_color "#FFD700" text_size 22
                     else:
                         null width 100 
                     
-                    text "Page [current_evidence_page + 1] of [len(inventory)]" size 24 color "#3b2313" yalign 0.5
+                    text "Page [current_evidence_page + 1] of [len(inventory)]" size 20 color "#3b2313" yalign 0.5
                     
                     if current_evidence_page < len(inventory) - 1:
-                        textbutton "Next >" action SetVariable("current_evidence_page", current_evidence_page + 1) text_color "#3b2313" text_hover_color "#FFD700" text_size 28
+                        textbutton "Next >" action SetVariable("current_evidence_page", current_evidence_page + 1) text_color "#3b2313" text_hover_color "#FFD700" text_size 22
                     else:
                         null width 100
 
@@ -288,23 +340,33 @@ screen examine_clue(clue_item):
         background "#00000088"
         xfill True
         yfill True
-        action Hide("examine_clue")
+        action Return()
 
     frame:
         background Transform("ui/wooden_board.png", size=(1200, 800)) 
-        xalign 0.5 yalign 0.35 
+        xalign 0.5 yalign 0.5
         xysize (1200, 800) 
-        
-        # Frame padding
-        padding (260, 220, 260, 200) 
+        padding (200, 200, 200, 120) 
         
         vbox:
-            spacing 15
+            spacing 10
             xfill True
             
-            text "[clue_item.name]" size 35 bold True color "#3b2313" xalign 0.5
-            add clue_item.visual xalign 0.5 ysize 160 fit "contain"
-            text "[clue_item.details]" size 24 text_align 0.5 color "#000000" xmaximum 600 xalign 0.5
+            null height 12
+            text "[clue_item.name]" size 26 bold True color "#2c1d11" outlines [(1, "#d4d4d4aa", 0, 1)] xalign 0.5 text_align 0.5
+            add clue_item.visual xalign 0.5 ysize 150 fit "contain"
+            text "[clue_item.details]" size 20 line_spacing 5 text_align 0.5 color "#1a1107" outlines [(1, "#d4d4d4aa", 0, 1)] xmaximum 720 xalign 0.5
+
+    frame:
+        background Transform("ui/EF.png", size=(720, 100))
+        xalign 0.5 yalign 0.5
+        yoffset -420
+        xysize (720, 100)
+        padding (40, 10)
+        vbox:
+            xalign 0.5
+            yalign 0.5
+            text "Evidence Found!" size 52 bold True color "#f5eedc" outlines [(2, "#2b1c10", 0, 1)] xalign 0.5 text_align 0.5
 
 screen search_item(evidence, x, y, idle_size, hover_size, idle_img=None, hover_img=None):
     default is_hovered = False
@@ -359,8 +421,8 @@ screen search_item(evidence, x, y, idle_size, hover_size, idle_img=None, hover_i
 
                 action Return("found_clue")
 
-# Game flow
 label start:
+    $ preferences.text_cps = 50
     show screen chapter_info_hud
 
     call chapter1
