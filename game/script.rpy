@@ -94,6 +94,19 @@ transform undim:
     yoffset 0
     matrixcolor BrightnessMatrix(0.0)
 
+transform frickme:
+    matrixcolor ColorizeMatrix("#fff", "#fff")
+    alpha 0.0
+    zoom 1.0
+    parallel:
+        ease 1.0 alpha 0.6
+        ease 1.0 alpha 0.0
+        repeat
+    parallel:
+        ease 2.0 zoom 1.05
+        zoom 1.0
+        repeat
+
 # Evidence
 init python:
     class Clue:

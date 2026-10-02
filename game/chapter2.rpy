@@ -36,7 +36,7 @@ label chapter2:
     jipri "Tama. base sa history ay itinayo ito ng mga prayleng rekolekto noong 1872 upang igunita ang unang Misa na nangyari noong Abril 8, 1521."
 
     window hide 
-    call screen search_item(ev_c2_b1, 1000, 700, 0.025, 0.03)
+    call screen search_item(ev_c2_b1, 1000, 725, 0.015, 0.02)
     $ inventory.append(ev_c2_b1)
     
     show screen examine_clue(ev_c2_b1)
