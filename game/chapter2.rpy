@@ -1,9 +1,14 @@
+image c2_ev1 = "evidences/butuan_5.png"
+image c2_ev2 = "evidences/butuan_4.png"
+image c2_ev3 = "evidences/butuan_6.png"
+
 default isTeamLimasawa = False
 
 label chapter2:
     $ current_chapter = 2
 
     scene black
+    show c2_ev1 at Transform(xpos=1000, ypos=725, zoom=0.015)
     with fade
 
     show text "{size=76}CHAPTER 2{/size}" at truecenter
@@ -37,7 +42,8 @@ label chapter2:
     show jipri talking at shake
     jipri "Tama. base sa history ay itinayo ito ng mga prayleng rekolekto noong 1872 upang igunita ang unang Misa na nangyari noong Abril 8, 1521."
 
-    window hide 
+    window hide
+    hide c2_ev1
     call screen search_item(ev_c2_b1, 1000, 725, 0.015, 0.02)
     $ inventory.append(ev_c2_b1)
     
@@ -102,10 +108,9 @@ label chapter2:
     window hide
     $ inventory.append(ev_c2_b2)
     
-    show screen examine_clue(ev_c2_b2)
-    "Evidence Found! Lumang manuscript na naglalaman ng sipi (random squilggly lines) mula kila Fr. Francisco Colin (1663) at Fr. Francisco Combes (1667).{nw}"
-    
+    show screen examine_clue(ev_c2_b2)    
     hide screen examine_clue 
+
     pause 1.0
     
     show jipri normal 
@@ -128,6 +133,7 @@ label chapter2:
 
     # Evidence 3: Magellan's expedition
     scene coastal_area
+    show c2_ev3 at Transform(xpos=150, ypos=750, zoom=0.05)
     with fade
 
     show judet normal:
@@ -173,7 +179,8 @@ label chapter2:
     show jipri talking at shake
     jipri "Tunay, tunay. Base sa kanilang paglalayag, ang mga natitirang barko ay tumungo sa baybayin ng hilaga at kanluran ng Mindanao."
 
-    window hide 
+    window hide
+    hide c2_ev3
     call screen search_item(ev_c2_b3, 150, 750, 0.05, 0.06)
     $ inventory.append(ev_c2_b3)
     
