@@ -56,8 +56,18 @@ label chapter5:
 
     scene black
     with fade
-    centered "{size=50}THANK YOU FOR PLAYING{/size}"
+    show text "{size=50}THANK YOU FOR PLAYING{/size}" at truecenter
+    with dissolve
     pause 2.0
+    hide text
+    with dissolve
+
+    scene selfie
+    with fade
+    pause 4.0
+
+    scene black
+    with fade
 
     return
 #sleepy pachckecnalangss

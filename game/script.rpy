@@ -427,10 +427,6 @@ label start:
     $ preferences.text_cps = 50
     show screen chapter_info_hud
 
-    call chapter1 from _call_chapter1
-    call chapter2 from _call_chapter2
-    call chapter3 from _call_chapter3
-    call chapter4 from _call_chapter4
     call chapter5 from _call_chapter5
 
     return
