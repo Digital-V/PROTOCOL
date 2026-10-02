@@ -18,7 +18,7 @@ define config.name = _("PROTOCOL")
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
 
-define gui.show_name = True
+define gui.show_name = False
 
 
 ## The version of the game.
@@ -62,7 +62,16 @@ define config.has_voice = True
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "audio/main_menu_music.mp3"
+define config.main_menu_music_fadein = 1.0
+
+label before_main_menu:
+    # Set the 'music' channel volume modifier (0.0 to 1.0)
+    $ renpy.music.set_volume(0.3, channel='music')
+    return
+
+    # Reset the channel volume multiplier back to 100%
+    
 
 
 ## Transitions #################################################################

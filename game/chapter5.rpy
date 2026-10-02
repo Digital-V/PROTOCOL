@@ -51,7 +51,7 @@ label chapter5:
     pause 2.0
     hide text
     with dissolve
-
+    play music "audio/bg_music5.mp3" fadein 1.0 volume 0.2 loop
     scene limasawa_shrine
     with fade
 #Walk in, callbacks
@@ -66,12 +66,22 @@ label chapter5:
         walk(position=1.0, time=2)
     pause 3.0
 
+<<<<<<< HEAD
     jiperson_ta "Ano namang pasabog 'to? Pa'no nila papatunayan na sa Limasawa nga talaga nangyari 'yung Unang Misa? Gusto ko na makita 'yan ah!"
+=======
+    jiperson_ti "Ano ang mga patunay na ang Limasawa ang pinagdausan ng Unang Misa?"
+>>>>>>> origin/main
     judet_ta "Napapaisip din ako pero nae-excite rin!"
     jipri_ta "Handang-handa na kayo ah. Oh heto na 'yung huli. Makinig kayo."
     #callback dim for nontalking chars
+<<<<<<< HEAD
     jipri_ti "Kung titingnan natin pabalik, lahat ng ebidensyang hinimay niyo eh may katotohanan."
     jipri_ta "Kaya nga parehong may laban 'yung Butuan at Limasawa eh. Dahil hati ang usapan, 'yung NHCP o National Historical Commission of the Philippines, nagpatawag na ng mga eksperto sa history para tapusin 'yung argumento."
+=======
+    jipri_ti "Kung titignan natin pabalik, lahat ng ebidensyang nakita natin ay may katotohanan. Lahat sila, regardless kung Butuan o Limasawa, ay may kanya-kanyang punto."
+    jipri_ta "Ngunit sa kadahilanang ito, nananatiling hati ang argumento ukol sa lugar ng Unang Misa. That's why to stop that,  nagsagawa ang sangay ng gobyerno, National History Comission of the Philippines, ng panels na binubuo ng mga eksperto sa larangang pangkasaysayan ng pinas."
+    jipri_ta "Kaya naman, upang matigil na, ay nagsagawa ang sangay ng gobyerno, National Historical Commission of the Philippines, ng panels na binubuo ng mga eksperto sa larangang pangkasaysayan ng Pinas."
+>>>>>>> origin/main
 
     # NHCP evidence
     show nhcp_document  at nhcp_pop zorder 0
@@ -95,6 +105,10 @@ label chapter5:
     with dissolve
 
     centered "{size=50}THANK YOU FOR PLAYING!{/size}"
+<<<<<<< HEAD
+=======
+    stop music fadeout 1.0
+>>>>>>> origin/main
     pause 3.0
 
     return

@@ -1,5 +1,10 @@
-label chapter4:
+image c4_ev2 = "evidences/limasawa_5.png"
+image c4_ev3 = "evidences/limasawa_6b.png"
+image c4_ev4 = "evidences/limasawa_9.png"
 
+label chapter4:
+    $ current_chapter = 4
+    
     scene black
     with fade
 
@@ -8,145 +13,155 @@ label chapter4:
     pause 2.0
     hide text
     with dissolve
-
+    play music "audio/bg_music4.mp3" fadein 1.0 volume 0.2 loop
     scene coastal_area2
     with fade
 
-    # EVIDENCE 1: EXPEDITION ROUTE
-    show jipri normal at offscreenleft
-    show jipri normal at walk(position=0.15, time=2)
     show jiperson normal at offscreenleft
-    show jiperson normal at walk(position=0.5, time=3)
-    show judet normal at offscreenright
-    show judet normal at walk(position=0.85, time=2)
-    pause 3.0
+    show jiperson normal at walk(position=0.5)
+    pause 0.8
+    jiperson_ta "Ito na ba yung mismong ruta ng expedition?"
 
-    jiperson_ta "So ito na ba yung route ng expedition?"
-    jipri_ta "Oo. Kailangan nating ikumpara ang recorded route sa lugar na pinagpipilian natin. Sa Butuan o Limasawa."
-    
-    window hide 
-    call screen search_item(ev_c3_b4, 1400, 665, 0.035, 0.045)
     $ inventory.append(ev_c3_b4)
-    
-    show screen examine_clue(ev_c3_b4)
-    "Evidence Found! Expedition Route map comparing Butuan and Limasawa."
-    hide screen examine_clue
+    $ play_sfx("audio/item_found.mp3", 3.0)
+    call screen examine_clue(ev_c3_b4)
 
-    judet_ti "So paano kung hindi tugma yung location sa route, ibig sabihin ba questionable na yung claim?"
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.2)
+    pause 0.8
+    jipri_ta "Oo. Ikumpara niyo 'yung recorded route d'yan sa Butuan at Limasawa."
+
+    show judet normal at offscreenright
+    show judet normal at walk(position=0.8)
+    pause 0.8
+    judet_ti "Paano kung hindi tugma ‘yung location sa route, ibig sabihin ba questionable na ‘yung claim?"
     jipri_ta "Tama."
 
-    show jipri normal at walk(position=-0.5, time=1.5)
-    show jiperson normal at walk(position=-0.5, time=2)
-    show judet normal at walk(position=-0.5, time=2.5)
-    pause 2.5
+    show jipri normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show jiperson normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show judet normal at walk(position=-0.5, time=1.2)
+    pause 1.2
 
     hide jiperson
     hide jipri
     hide judet
 
-    # EVIDENCE 2: DISTANCE AND DIRECTION
     scene seaside_road
+    show c4_ev2 at Transform(xpos=1680, ypos=850, zoom=0.025)
     with fade
 
-    show jipri normal at offscreenleft
-    show jipri normal at walk(position=0.15, time=2)
-    show jiperson normal at offscreenleft
-    show jiperson normal at walk(position=0.5, time=3)
-    show judet normal at offscreenright
-    show judet normal at walk(position=0.85, time=2)
-    pause 3.0
-
+    show judet normal at offscreenleft
+    show judet normal at walk(position=0.5)
+    pause 0.8
     judet_ta "May compass at distance markers dito."
-    
+
     window hide 
+    hide c4_ev2
     call screen search_item(ev_c3_b5, 1680, 850, 0.025, 0.035)
     $ inventory.append(ev_c3_b5)
-    
-    show screen examine_clue(ev_c3_b5)
-    "Evidence Found! Distance and Direction compass markers."
-    hide screen examine_clue
+    $ play_sfx("audio/item_found.mp3", 3.0)
+    call screen examine_clue(ev_c3_b5)
 
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.2)
+    pause 0.8
     jipri_ta "Gagamitin natin yung recorded directions at distances bilang clues."
-    jiperson_ti "So hindi lang kung saan sila pumunta, pati na rin kung gaano kalayo at anong direksyon."
-    judet_ti "Hmmm... and kapag pinagsama natin yung route, distance, at direction..."
-    jipri_ta "...mas makikita natin kung alin ang mas consistent."
 
-    show jipri normal at walk(position=-0.5, time=1.5)
-    show jiperson normal at walk(position=-0.5, time=2)
-    show judet normal at walk(position=-0.5, time=2.5)
-    pause 2.5
+    show jiperson normal at offscreenright
+    show jiperson normal at walk(position=0.8)
+    pause 0.8
+    jiperson_ti "Ah, edi hindi lang pala basta kung saan sila napunta, susukatin din natin kung gaano kalayo at kung anong direksyon ang dinaanan nila."
+    judet_ti "At kapag pinagsama natin ‘yung ruta, gano kalayo, at direksyon…"
+    jipri_ta " …mas makikita kung alin ang may sense."
+
+    show jipri normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show judet normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show jiperson normal at walk(position=-0.5, time=1.2)
+    pause 1.2
 
     hide jiperson
     hide jipri
     hide judet
 
-    # EVIDENCE 3: ISLAND DESCRIPTION
     scene museum
+    show c4_ev3 at Transform(xpos=960, ypos=525, zoom=0.025)
     with dissolve
 
-    show jipri normal at offscreenleft
-    show jipri normal at walk(position=0.15, time=2)
     show jiperson normal at offscreenleft
-    show jiperson normal at walk(position=0.95, time=3)
-    show judet normal at offscreenright
-    show judet normal at walk(position=0.80, time=2)
-    pause 3.0
-
+    show jiperson normal at walk(position=0.5)
+    pause 0.8
     jiperson_ta "Wait, nasa Limasawa tayo?"
+
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.2)
+    pause 0.8
     jipri_ta "Oo."
+
+    show judet normal at offscreenright
+    show judet normal at walk(position=0.88)
+    pause 0.8
     judet_ta "Ibig sabihin pwede natin ma-check dito yung ibang descriptions ng Mazua?"
-    
+
+    show judet normal at walk(position=0.92, time=0.6)
+    show jiperson normal at walk(position=0.74, time=0.6)
+    pause 0.6
+
     window hide 
-    call screen search_item(ev_c3_b6, 960, 525, 0.025, 0.03)
+    hide c4_ev3
+    call screen search_item(ev_c3_b6, 960, 525, 0.025, 0.03, idle_img="evidences/limasawa_6b.png", hover_img="evidences/limasawa_6.png")
     $ inventory.append(ev_c3_b6)
-    
-    show screen examine_clue(ev_c3_b6)
-    "Evidence Found! Island Description showing mountains and shoreline."
-    hide screen examine_clue
+    $ play_sfx("audio/item_found.mp3", 3.0)
+    call screen examine_clue(ev_c3_b6)
 
-    jipri_ta "Sa account ni Pigafetta, ang Mazua ay inilarawan bilang isang isla."
-    jiperson_ta "And Limasawa is an island."
-    judet_ti "Pero sabi mo kanina, hindi sapat ang isang evidence."
-    jiperson_ta "Correct. Kaya kailangan pa rin natin i-connect sa route, distance, direction, at sa original account."
+    jipri_ta "Sa account ni Pigafetta, ang Mazaua ay isang isla."
+    jiperson_ta "Limasawa Island?"
+    judet_ti "Ohhh, pero sabi mo kanina, hindi sapat ang isang ebidensya lang. "
+    jiperson_ta "Tama. Kaya kailangan pa rin alamin at ikumpara to sa ruta, layo, direksyon, at sa description sa account ni Pigafetta. "
 
-    show jipri normal at walk(position=-0.5, time=1.5)
-    show jiperson normal at walk(position=-0.5, time=2)
-    show judet normal at walk(position=-0.5, time=2.5)
-    pause 2.5
+    show jipri normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show jiperson normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show judet normal at walk(position=-0.5, time=1.2)
+    pause 1.2
 
     hide jiperson
     hide jipri
     hide judet
 
-    # EVIDENCE 4: HISTORICAL INVESTIGATION
     scene library
+    show c4_ev4 at Transform(xpos=90, ypos=630, zoom=0.05)
     with dissolve
 
-    show jipri normal at offscreenleft
-    show jipri normal at walk(position=0.15, time=2)
-    show jiperson normal at offscreenleft
-    show jiperson normal at walk(position=0.5, time=3)
-    show judet normal at offscreenright
-    show judet normal at walk(position=0.85, time=2)
-    pause 3.0
+    show judet normal at offscreenleft
+    show judet normal at walk(position=0.5)
+    pause 0.8
+    judet_ta "Ito na ba ‘yung shrine?"
 
-    judet_ta "Ito na ba yung shrine at investigation board?"
-    jipri_ta "Oo. At dito natin pagsasama-samahin ang lahat."
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.2)
+    pause 0.8
+    jipri_ta "Oo. At dito na rin pagsasama-samahin ang lahat."
 
     window hide 
+    hide c4_ev4
     call screen search_item(ev_c3_b9, 90, 630, 0.05, 0.06)
     $ inventory.append(ev_c3_b9)
-    
-    show screen examine_clue(ev_c3_b9)
-    "Evidence Found! Historical Investigation board connecting all clues to Limasawa."
-    hide screen examine_clue
+    $ play_sfx("audio/item_found.mp3", 3.0)
+    call screen examine_clue(ev_c3_b9)
 
+    show jiperson normal at offscreenright
+    show jiperson normal at walk(position=0.8)
+    pause 0.8
     jiperson_ti "Kapag pinag-connect natin lahat..."
-    judet_ta "Mas nag-lead sa Limasawa."
-    jipri_ta "Hmm... Pero kailangan nating tandaan na hindi lamang isang evidence ang nagbigay sa atin ng conclusion."
-    jipri_ta "So, after reviewing all the evidence, which side are you guys?"
+    judet_ta "Mas pumapabor sa Limasawa."
+    jipri_ta "Kailangan nating tandaan na hindi lang isang ebidensya ang nagbigay ng conclusion na to."
+    jipri_ta "So, after lahat ng nakita niyo, saan ginanap ang First Mass?"
 
-    # PLAYER CHOICE
     menu:
         "BUTUAN":
             $ historical_choice = "Butuan"
@@ -156,14 +171,15 @@ label chapter4:
             jump chapter4_choice_result
 
 label chapter4_choice_result:
-    jipri_ta "Interesting. Pero hindi pa tapos ang investigation."
-    judet_ta "Bakit? May kulang pa ba na evidence?"
-    jipri_ta "Meron."
-    jipri_ta "At dito natin malalaman kung ano ang naging conclusion kung Butuan ba o Limasawa."
+    jipri_ta "Interesting.Kaso, ‘di pa dito nagtatapos."
+    judet_ta "Bakit? May kulang pa ba na ebidensya?"
 
-    scene black
-    with fade
-    centered "{size=50}END OF CHAPTER 4!!{/size}"
+    pause 1.0
+    
+    show text "{size=76}END OF CHAPTER 4{/size}" at truecenter
+    with dissolve
     pause 2.0
-
+    hide text
+    with dissolve
+    stop music fadeout 1.0
     return
