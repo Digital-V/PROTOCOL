@@ -291,9 +291,12 @@ screen navigation():
 
     vbox:
         style_prefix "navigation"
-
-        xpos gui.navigation_xpos
-        yalign 0.5
+        if renpy.current_screen().screen_name[0] == "main_menu":
+            xpos 1080
+            yalign 0.80
+        else: 
+            xpos 60
+            yalign 0.5
 
         spacing gui.navigation_spacing
 
@@ -387,7 +390,7 @@ style main_menu_frame:
     xsize 420
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    #background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0

@@ -1,264 +1,252 @@
-init python:
-    POS = {"jiperson": "left", "jipri": "center", "judet": "right"}
-    def _at(tag, dimmed, shaking=False):
-        p = getattr(renpy.store, POS[tag])
-        transforms = [p, renpy.store.dim if dimmed else renpy.store.undim]
-        if shaking:
-            transforms.append(renpy.store.shake)
-        return transforms
-    def make_cb(tag, mood="talking"):
-        def cb(event, interact=True, **kwargs):
-            if not interact:
-                return
-            showing = renpy.get_showing_tags()
-            if event == "begin":
-                for t in POS:
-                    if t not in showing:
-                        continue
-                    if t == tag:
-                        renpy.show((t, mood), at_list=_at(t, False, shaking=(mood == "talking")))
-                    else:
-                        renpy.show((t,), at_list=_at(t, True))
-            elif event == "end":
-                for t in POS:
-                    if t in showing:
-                        renpy.show((t,), at_list=_at(t, False))
-        return cb
-#change image name if not identical
-define judet = Character("Judet", image="judet", callback=make_cb("judet"))
-define jipri = Character("Jipri", image="jipri", callback=make_cb("jipri"))
-define jiperson = Character("Jiperson", image="jiperson", callback=make_cb("jiperson"))
-define judet_ti = Character("Judet", image="judet", callback=make_cb("judet", "thinking"), what_italic=True)
-define jipri_ti = Character("Jipri", image="jipri", callback=make_cb("jipri", "thinking"), what_italic=True)
-define jiperson_ti = Character("Jiperson", image="jiperson", callback=make_cb("jiperson", "thinking"), what_italic=True)
-define judet_ta = Character("Judet", image="judet", callback=make_cb("judet", "talking"), what_italic=True)
-define jipri_ta = Character("Jipri", image="jipri", callback=make_cb("jipri", "talking"), what_italic=True)
-define jiperson_ta = Character("Jiperson", image="jiperson", callback=make_cb("jiperson", "talking"), what_italic=True)
-#change each name asset if not identical
-image judet = Transform("characters/judet normal.png", zoom=0.20)
-image judet talking = Transform("characters/judet talking.png", zoom=0.20)
-image judet thinking = Transform("characters/judet thinking.png", zoom=0.20)
-image jipri = Transform("characters/jipri normal.png", zoom=0.20)
-image jipri talking = Transform("characters/jipri talking.png", zoom=0.20)
-image jipri thinking = Transform("characters/jipri thinking.png", zoom=0.20)
-image jiperson = Transform("characters/jiperson normal.png", zoom=0.20)
-image jiperson talking = Transform("characters/jiperson talking.png", zoom=0.20)
-image jiperson thinking = Transform("characters/jiperson thinking.png", zoom=0.20)###
+image c3_ev1 = "evidences/limasawa_1a.png"
+image c3_ev2 = "evidences/limasawa_2.png"
+image c3_ev5 = "evidences/limasawa_8a.png"
 
-image evidence_placeholder1 = Fixed(
-    Solid("#8a794b", xsize=840, ysize=460),
-    Transform("evidences/L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
-    Text("Evidence Obtained: Pigafetta's Account", size=30, color="#060606", xpos=44, ypos=34),
-    xsize=840,
-    ysize=460
-)
-image evidence_placeholder2 = Fixed(
-    Solid("#8a794b", xsize=840, ysize=460),
-    Transform("evidences/L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
-    Text("Evidence Obtained: Mazua Identity", size=30, color="#060606", xpos=44, ypos=34),
-    xsize=840,
-    ysize=460
-)
-image evidence_placeholder3 = Fixed(
-    Solid("#8a794b", xsize=840, ysize=460),
-    Transform("evidences/L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
-    Text("Evidence Obtained: Geographical Description", size=30, color="#060606", xpos=44, ypos=34),
-    xsize=840,
-    ysize=460
-)
-
-image evidence_placeholder4 = Fixed(
-    Solid("#8a794b", xsize=840, ysize=460),
-    Transform("evidences/L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
-    Text("Evidence Obtained: Two Rulers / Political Context", size=30, color="#060606", xpos=44, ypos=34),
-    xsize=840,
-    ysize=460
-)
-
-image evidence_placeholder5 = Fixed(
-    Solid("#8a794b", xsize=840, ysize=460),
-    Transform("evidences/L8.png", size=(300, 300), xpos=60, ypos=70), #change image if not identical
-    Text("Evidence Obtained: Primary Sources vs. Later Tradition", size=30, color="#060606", xpos=44, ypos=34),
-    xsize=840,
-    ysize=460
-)
-transform dim:
-    matrixcolor BrightnessMatrix(-0.3)
-transform undim:
-    matrixcolor BrightnessMatrix(0.0)
 label chapter3:
+    $ current_chapter = 3
+
     scene black
     with fade
+
     show text "{size=76}CHAPTER 3{/size}" at truecenter
     with dissolve
-    pause 3.0
+    pause 2.0
     hide text
     with dissolve
-    show text "{size=50}{i}Habang naglalakad papunta sa susunod na lugar...{/size}{i}"
+
+    show text "{size=50}{i}Habang naglalakad papunta sa susunod na lugar...{/size}{i}" at truecenter
     with dissolve
-    pause 3.0
+    pause 2.0
     hide text
     with dissolve
-    
+    play music "audio/bg_music3.mp3" fadein 1.0 volume 0.2 loop
     scene street
     with fade
-    show jiperson at left
-    with dissolve
-    jiperson_ta "Grabe, parang ang dami na nating napuntahan. Akala ko ba simpleng investigation at pag-aaral lang to?"
-    show judet at right
-    with dissolve
-    judet_ta "Simple sana kung isang lugar lang ang may claim eh."
-    show jipri at center
-    with dissolve
-    jipri_ta "At kung lahat ng evidence ay nagtuturo sa iisang direksyon at lugar."
-    jiperson_ti "Pero hindi naman ganon ang nangyayari."
-    jipri_ta "Exactly."
-    judet_ti "So, saan na tayo papunta ngayon?"
-    jipri_ta "Sa lugar kung saan pwede natin mahanap at mabalikan ang pinakaunang account patungkol sa First Mass."
-    scene black
-    with fade
-    pause 2.0
+    show jiperson normal at offscreenleft
+    show jiperson normal at walk(position=0.5)
+    pause 0.8
+    jiperson_ta "Ang dami na nating naikot. Akala ko ba simpleng investigation lang yung gagawin natin? Sumasakit na ulo ko sa dami ng kailangan nating alamin."
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.2)
+    pause 0.8
+    jipri_ta "Simple lang dapat to e, kung iisang lugar lang ang inaaral at ine-investigate natin."
+    jiperson_ti "At kung ‘di nagsasalungat yung mga ebidensya."
+    show judet normal at offscreenright
+    show judet normal at walk(position=0.8)
+    pause 0.8
+    judet_ta "Edi saan na tayo papunta ngayon?"
+
+    jipri_ta "Kailangan nating mahanap ‘yung pinagmulan, ‘yung mismong source na magtuturo tungkol sa First Mass. "
+    show jipri normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show jiperson normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show judet normal at walk(position=-0.5, time=1.2)
+    pause 1.2
+
+    hide jiperson
+    hide jipri
+    hide judet
+
     scene museum
+    show c3_ev1 at Transform(xpos=935, ypos=525, zoom=0.025)
     with dissolve
-    show jiperson at left
-    with dissolve
-    jiperson_ti "..."
-    jiperson_ti "Ano naman ‘tong nahanap natin?"
-    show jipri
-    show judet at right
-    with dissolve
-    jipri_ta "Isang account mula kay Antonio Pigafetta."
-    judet_ta "Siya yung kasama sa ekspedisyon ni Magellan, diba?"
-    jipri_ta "Oo. At dahil kasama siya mismo sa ekspedisyon, importante at mahalaga na malaman natin kung ano ang isinulat niya tungkol sa lugar kung saan ginanap ang First Mass."
-    show evidence_placeholder1 at truecenter
-    with dissolve
-    pause
-    jiperson_ti "Wait… Mazua?"
+
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.5)
+    pause 0.8
+    jipri_ta "Nandito tayo ngayon para tingnan ang pinakaunang primary source ukol sa ekspedisyon."
+
+    show jipri normal at walk(position=0.2, time=0.6)
+    pause 0.6
+
+    window hide 
+    hide c3_ev1
+    call screen search_item(ev_c3_b1, 935, 525, 0.025, 0.03, idle_img="evidences/limasawa_1a.png", hover_img="evidences/limasawa_1b.png")
+    $ inventory.append(ev_c3_b1)
+    $ play_sfx("audio/item_found.mp3", 3.0)
+    call screen examine_clue(ev_c3_b1)
+
+    show jiperson normal at offscreenleft
+    show jiperson normal at walk(position=0.5)
+    pause 0.8
+    jiperson_ti "Wait lang, ano tong “Mazaua” na sinasabi niya dito? Ano yon?"
+
+    show judet normal at offscreenright
+    show judet normal at walk(position=0.8)
+    pause 0.8
     judet_ti "Huh? Hindi Butuan?"
-    hide evidence_placeholder1
-    jipri_ta "Sa account ni Pigafetta, ang lugar ay tinawag na Mazua, at doon inilagay ang easter Sunday Mass noong March 31, 1521."
-    jiperson_ti "Pero bakit ganon? Yung mga evidence na nakuha natin ay nag l-lead sa Butuan. Paano nangyari iyon?"
-    judet_ta "Ayan, kaya hindi tayo matapos-tapos e. Yung mga evidence na nakukuha natin sumasalungat sa isa’t-isa. "
-    jipri_ta "Dumagdag pa yang Mazua. Hindi natin alam kung saan at ano ba ang tinutukoy nito. "
-    scene black
-    with fade
-    show text "{size=50}{i}Habang naghahanap ng iba pang mga ebidensya...{/size}{i}"
-    with dissolve
-    pause 3.0
-    hide text
-    with dissolve
+    jipri_ta "Sa account ni Pigafetta, Mazaua ang pangalan ng lugar kung saan nangyari ang Easter Sunday Mass noong March 31, 1521. "
+    jiperson_ti "Ang labo! Eh 'yung mga unang ebidensya natin puro sa Butuan ang bagsak. Paano nasingit 'tong Mazua na 'to? Ano ba talaga?"
+    judet_ta "Kaya hindi tayo matapos-tapos, sumasalungat 'yung ibang ebidensya sa original account. "
+    jipri_ta "Oh 'di ba, dumagdag pa 'yang Mazaua. Kailangan ding alamin kung saan yan."
+
+    show jipri normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show jiperson normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show judet normal at walk(position=-0.5, time=1.2)
+    pause 1.2
+
+    hide jiperson
+    hide jipri
+    hide judet
+
     scene museum
+    show c3_ev2 at Transform(xpos=935, ypos=525, zoom=0.025)
     with fade
-    show jiperson at left
-    show jipri at center
-    show judet at right
-    with dissolve
+
+    show judet normal at offscreenleft
+    show judet normal at walk(position=0.5)
+    pause 0.8
     judet_ta "Kung Mazua yung pangalan sa original account ni Pigafetta, saan naman natin hahanapin yun?"
-    jipri_ta "Yan ang kailangan nating alamin."
-    show evidence_placeholder2 at truecenter
-    with dissolve
-    pause
-    hide evidence_placeholder2
-    jiperson_ta "So, dalawang possible location ulit?"
-    jipri_ta "Sa investigation natin, kailangan ikumpara ang Butuan at Limasawa base sa mga historical clues."
-    judet_ta "Hindi pwedeng dahil matagal nang connected ang Butuan sa First Mass, automatic na masasabi nating Mazua na yun."
-    jiperson_ta "Tama. Kailangan nating tignan kung aling lugar sa dalawa ang mas tugma sa description ng Mazua. "
-    scene black
-    with fade
-    show text "{size=50}{i}...{/size}{i}"
-    with dissolve
-    pause 3.0
-    hide text
-    with dissolve
+
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.2)
+    pause 0.8
+    jipri_ta "‘Yan ang kailangan nating alamin."
+
+    show judet normal at walk(position=0.8, time=0.6)
+    pause 0.6
+
+    window hide 
+    hide c3_ev2
+    call screen search_item(ev_c3_b2, 935, 525, 0.025, 0.03)
+    $ inventory.append(ev_c3_b2)
+    $ play_sfx("audio/item_found.mp3", 3.0)
+    call screen examine_clue(ev_c3_b2)
+
+    show jiperson normal at offscreenleft
+    show jiperson normal at walk(position=0.5)
+    pause 0.8
+    jiperson_ta "Anak ng... edi, babalik tayo sa dalawang possible location ulit? Pagod na ako."
+    jipri_ta "Ikukumpara natin ang Butuan at Limasawa base sa mga historical clues niyan."
+    judet_ta "Ibig sabihin, hindi pwedeng porke't matagal nang connected ang Butuan sa First Mass eh 'yun na agad ang Mazua."
+    jiperson_ta "Tama. Hindi tayo pwedeng bumase lang sa kwento-kwento o monumento. Hihimayin natin kung aling lugar sa dalawa ang mas tugma sa description ng Mazaua na 'yan."
+
+    show jipri normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show jiperson normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show judet normal at walk(position=-0.5, time=1.2)
+    pause 1.2
+
+    hide jiperson
+    hide jipri
+    hide judet
+
     scene coastal_area2
     with fade
-    show jiperson at left
-    show jipri at center
-    show judet at right
-    with dissolve
-    show evidence_placeholder3 at truecenter
-    with dissolve
-    pause
-    hide evidence_placeholder3
+
+    show jiperson normal at offscreenleft
+    show jiperson normal at walk(position=0.5)
+    pause 0.8
     jiperson_ta "Ito ba yung geographical evidence?"
-    jipri_ta "Oo. Kung may description ng lugar, pwede natin ikumpara iyon sa actual geography."
-    judet_ti "So basically, titignan natin alin sa dalawa ang tugma ang geographical features ng Mazua."
+    show judet normal at offscreenright
+    show judet normal at walk(position=0.8)
+    pause 0.8
+    judet_ti "Edi kailangan natin ikumpara to sa nakalagay na description ng Mazaua?"
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.2)
+    pause 0.8
     jipri_ta "Exactly. Tama."
-    jiperson_ti "Wait, parang nag i-iba na yung approach natin."
-    jipri_ta " Akala ko ako lang ang naka pansin."
-    jipri_ti "Ngayon, hinahanap na natin kung alin ang mas tugma sa description ng Mazua instead na hanapin natin mismo kung ano ang connection nito sa Butuan."
-    scene black
-    with fade
-    show text "{size=50}{i}Habang naghahanap ng ebidensya...{/size}{i}"
-    with dissolve
-    pause 3.0
-    hide text
-    with dissolve
+    $ inventory.append(ev_c3_b3)
+    $ play_sfx("audio/item_found.mp3", 3.0)
+    call screen examine_clue(ev_c3_b3)
+    jiperson_ta "Ang galing! Nag e-enjoy na ako sa investigation na to."
+
+    show jipri normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show jiperson normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show judet normal at walk(position=-0.5, time=1.2)
+    pause 1.2
+
+    hide jiperson
+    hide jipri
+    hide judet
+
     scene seaside_road
     with fade
-    show judet at right
-    show jipri at center
-    with dissolve
+
+    show judet normal at offscreenleft
+    show judet normal at walk(position=0.5)
+    pause 0.8
     judet_ta "Wait, bakit tayo bumalik sa Butuan side?"
+
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.2)
+    pause 0.8
     jipri_ti "May kailangan tayong linawin tungkol sa ruler evidence na nakita natin noon."
-    show jiperson at left
-    with dissolve
-    jiperson_ta "Yung ruler na connected sa Butuan?"
+
+    show jiperson normal at offscreenright
+    show jiperson normal at walk(position=0.8)
+    pause 0.8
+    jiperson_ta "Yung ruler ba na connected sa Butuan? Anong meron don? "
     jipri_ti "Oo."
-    show evidence_placeholder4 at truecenter
-    with dissolve
-    pause
-    hide evidence_placeholder4
-    jipri_ti "May mga pinunong naging bahagi ng pangyayari noong expedition."
-    jipri_ta "May connection ang isang ruler sa Butuan, pero may mga ibang lugar at pinuno ring involved sa mga pangyayari."
-    judet_ti "So? Hindi porke connected sa Butuan yung isang ruler, ibig sabihin doon na mismo ang First Mass?"
-    jipri_ta "Tama."
-    jiperson_ta "Ang ruler ay evidence ng connection, pero kailangan pa rin nating patunayan ang lugar/lokasyon."
-    scene black
-    with fade
-    show text "{size=50}{i}Papunta sa library...{/size}{i}"
-    with dissolve
-    pause 3.0
-    hide text
-    with dissolve
+    $ inventory.append(ev_c3_b7)
+    $ play_sfx("audio/item_found.mp3", 3.0)
+    call screen examine_clue(ev_c3_b7)
+
+    jipri_ti "May mga pinunong naging bahagi ng pangyayari noong expedition. May connection ‘yung isang ruler sa Butuan, pero may mga ibang ruler din na kasama sa pangyayari na yon."
+    judet_ti "Oh, ngayon lahat nag m-make sense. Hindi porke’t connected sa Butuan yung isang ruler na kasama doon, ibig sabihin doon na mismo ang First Mass."
+    jiperson_ta "Yung ruler, nagpapakita lang yan na may connection. Kailangan pa rin natin alamin kung saan ba talaga ‘yung mismong lugar."
+
+    show jipri normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show judet normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show jiperson normal at walk(position=-0.5, time=1.2)
+    pause 1.2
+
+    hide jiperson
+    hide jipri
+    hide judet
+
     scene library
+    show c3_ev5 at Transform(xpos=1475, ypos=225, zoom=0.025)
     with fade
-    show judet at right
-    show jipri at center
-    show jiperson at left
-    with dissolve
-    jiperson_ta "Ano naman ang hahanapin natin dito?"
-    jipri_ta "Mga historical writings. Kailangan nating makumipirma ang mga naunang sources at mga interpretations."
-    jiperson_ti "Edi may pagkakaiba?"
-    jipri_ta "Meron."
-    show evidence_placeholder5 at truecenter
-    with dissolve
-    pause
-    hide evidence_placeholder5
-    jipri_ti "Sa account ni Pigafetta, ginamit niya nag pangalang Mazua."
-    jiperson_ta "Habang may mga later historical writings na nag-uugnay nito sa Butuan."
-    jipri_ta "Kailangan nating tignan kung saan nanggaling ang bawat interpretation."
-    jiperson_ta "Meaning, hindi natin pwedeng paghaluin yung orginal account at yung mga bagong interpretation."
-    scene black
-    with fade
-    show text "{size=50}{i}...{/size}{i}"
-    with dissolve
-    pause 1.5
-    hide text
-    with dissolve
-    scene library
-    with fade
-    show jiperson at left
-    show jipri at center
-    show judet at right
-    with dissolve
-    judet_ta "So… yung mga evidence natin sa Butuan, hindi naman pala basta-basta fake."
-    jiperson_ta "Pero hindi rin natin masasabi na sapat iyo para masabing Butuan talaga ang Mazua."
+
+    show jiperson normal at offscreenleft
+    show jiperson normal at walk(position=0.5)
+    pause 0.8
+    jiperson_ta "Tapos ngayon, andito tayo sa puro libro? Ano naman hahalungkatin natin dito?"
+
+    show jipri normal at offscreenleft
+    show jipri normal at walk(position=0.2)
+    pause 0.8
+    jipri_ta "Mga historical writings. I-check niyo ‘yung mga unang sources na nakuha at ikumpara sa mga bagong interpretations."
+
+    window hide 
+    hide c3_ev5
+    call screen search_item(ev_c3_b8, 1475, 225, 0.040, 0.045, idle_img="evidences/limasawa_8a.png", hover_img="evidences/limasawa_8b.png")
+    $ inventory.append(ev_c3_b8)
+    $ play_sfx("audio/item_found.mp3", 3.0)
+    call screen examine_clue(ev_c3_b8)
+
+    jipri_ti "Sa account ni Pigafetta, ginamit niya ang pangalang Mazua."
+    jiperson_ta "Tapos 'yung mga sumunod na chismis—este, historical writings pala, pilit na inuugnay sa Butuan 'yung lugar."
+    jipri_ta "Kaya kailangan malaman kung saan galing ang bawat interpretation at kung bakit nila naisulat yon."
+    jiperson_ta "Gets. Hindi natin pwedeng pagsamahin ang mga interpretation na galing sa iba’t ibang sources o account."
+
+    show judet normal at offscreenright
+    show judet normal at walk(position=0.8)
+    pause 0.8
+    judet_ta "Yung mga ebidensya natin sa Butuan, hindi naman pala basta-basta. May ebidensya pa rin na sumosuporta. "
+    jiperson_ta "‘di rin natin masasabi na sapat ‘yon para masabing Butuan talaga ang Mazaua."
     jipri_ta "Tama."
     judet_ti "May historical connection naman. May ruler. May traditions."
-    jipri_ti "Pero may original account na nagsasabing Mazua, at kailangan pa nating malaman kung saan ba talaga yon."
+    jipri_ti "Pero may original account na nagsasabing Mazua, at kailangan pa nating malaman kung saan ba talaga 'yon."
     jipri_ta "At ngayon, alam na natin kung ano ang susunod nating gagawin."
-    judet_ta "Ano naman 'yon?"
-    jipri_ta "Hanapin natin kung aling lugar ang pinaka tumutugma sa lahat ng descriptions ng Mazua."
-    jiperson_ta "Hmmm… *sigh* May point ka diyan."
+    judet_ta "Ano nang plano?"
+    jipri_ta "Hanapin natin kung aling lugar ang pinakatumatugma sa lahat ng descriptions ng Mazua."
+
+    pause 1.0
+
+    show text "{size=76}END OF CHAPTER 3{/size}" at truecenter
+    with dissolve
+    pause 2.0
+    hide text
+    with dissolve
+    stop music fadeout 1.0
     return
