@@ -1,10 +1,10 @@
-
 image c4_ev2 = "evidences/limasawa_5.png"
 image c4_ev3 = "evidences/limasawa_6b.png"
 image c4_ev4 = "evidences/limasawa_9.png"
 
 label chapter4:
     $ current_chapter = 4
+    
     scene black
     with fade
 

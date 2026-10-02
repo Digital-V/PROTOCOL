@@ -1,6 +1,6 @@
 image c2_ev1 = "evidences/butuan_5.png"
 image c2_ev2 = "evidences/butuan_4.png"
-image c2_ev3 = "evidences/butuan_6.png"
+image c2_ev3 = "evidences/butuan_6b.png"
 
 default isTeamLimasawa = False
 
@@ -8,7 +8,6 @@ label chapter2:
     $ current_chapter = 2
 
     scene black
-    show c2_ev1 at Transform(xpos=1000, ypos=725, zoom=0.015)
     with fade
 
     show text "{size=76}CHAPTER 2{/size}" at truecenter
@@ -19,6 +18,7 @@ label chapter2:
     play music "audio/bg_music2.mp3" fadein 1.0 volume 0.2 loop
     # Evidence 1: Monument
     scene monument
+    show c2_ev1 at Transform(xpos=1000, ypos=725, zoom=0.015)
     with fade
 
     show jipri normal:
@@ -178,7 +178,7 @@ label chapter2:
 
     window hide
     hide c2_ev3
-    call screen search_item(ev_c2_b3, 150, 750, 0.05, 0.06)
+    call screen search_item(ev_c2_b3, 150, 750, 0.05, 0.06, idle_img="evidences/butuan_6b.png", hover_img="evidences/butuan_6.png")
     $ inventory.append(ev_c2_b3)
     $ play_sfx("audio/item_found.mp3", 3.0)
     call screen examine_clue(ev_c2_b3)
