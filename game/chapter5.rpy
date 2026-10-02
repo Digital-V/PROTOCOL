@@ -2,14 +2,16 @@ image nhcp_document = "evidences/limasawa_10.png"
 image chapter5_fan_art_photo = "final_art.jpg"
 
 transform nhcp_pop:
-    xalign 0.12
-    yalign 0.65
+    xpos 0.30
+    ypos 0.40
+    xanchor 0.5
+    yanchor 0.5
     alpha 0.0
     zoom 0.1
     parallel:
         ease 0.4 alpha 1.0
     parallel:
-        ease 0.4 zoom 0.15
+        ease 0.4 zoom 0.14
 
 screen chapter5_fan_art_polaroid():
     zorder 200
@@ -66,23 +68,22 @@ label chapter5:
         walk(position=1.0, time=2)
     pause 3.0
 
-    jiperson_ti "Ano ang mga patunay na ang Limasawa ang pinagdausan ng Unang Misa?"
+    jiperson_ta "Ano namang pasabog 'to? Pa'no nila papatunayan na sa Limasawa nga talaga nangyari 'yung Unang Misa? Gusto ko na makita 'yan ah!"
     judet_ta "Napapaisip din ako pero nae-excite rin!"
-    jipri_ta "Well, ano handa na ba kayo malaman kung ano ang huling ebidensya? Makinig kayo nang mabuti."
+    jipri_ta "Handang-handa na kayo ah. Oh heto na 'yung huli. Makinig kayo."
     #callback dim for nontalking chars
-    jipri_ti "Kung titignan natin pabalik, lahat ng ebidensyang nakita natin ay may katotohanan. Lahat sila, regardless kung Butuan o Limasawa, ay may kanya-kanyang punto."
-    jipri_ta "Ngunit sa kadahilanang ito, nananatiling hati ang argumento ukol sa lugar ng Unang Misa. That's why to stop that,  nagsagawa ang sangay ng gobyerno, National History Comission of the Philippines, ng panels na binubuo ng mga eksperto sa larangang pangkasaysayan ng pinas."
-    jipri_ta "Kaya naman, upang matigil na, ay nagsagawa ang sangay ng gobyerno, National Historical Commission of the Philippines, ng panels na binubuo ng mga eksperto sa larangang pangkasaysayan ng Pinas."
+    jipri_ti "Kung titingnan natin pabalik, lahat ng ebidensyang hinimay niyo eh may katotohanan."
+    jipri_ta "Kaya nga parehong may laban 'yung Butuan at Limasawa eh. Dahil hati ang usapan, 'yung NHCP o National Historical Commission of the Philippines, nagpatawag na ng mga eksperto sa history para tapusin 'yung argumento."
 
     # NHCP evidence
     show nhcp_document  at nhcp_pop zorder 0
-    jipri_ta "At ang naging desisyon nila? Batay sa mga lumang tala at ebidensya, pinanindigan ng NHCP na sa Limasawa talaga naganap ang Unang Misa."
+    jipri_ta "At ang desisyon nila? Batay sa lumang tala at lahat ng ebidensyang tumugma... sa Limasawa talaga nangyari ang Unang Misa. 'Yan ang opisyal na stand nila."
 
     hide nhcp_document
     with dissolve
 
-    jipri_ta "Pero kahit may opisyal nang sagot, hindi ibig sabihing sarado na ang usapan. Ang kasaysayan kasi, puwede pang magbago kapag may mga bagong matuklasan."
-    jipri_ti "Sa huli, hindi lang naman ito basta pagtatalo kung Limasawa ba o Butuan. Ang mas mahalaga, kung ano naging epekto ng pangyayaring 'to sa ating mga Pilipino ngayon."
+    jipri_ta "Pero opisyal man o hindi, baka bukas-makalawa may bago na namang ebidensya na lumitaw. Ganyan talaga ang history."
+    jipri_ti "Sa huli naman, hindi lang naman ito tungkol kung saang lugar unang nagsimba. Ang mahalaga, ano 'yung naging epekto ng pangyayaring 'yon sa ating mga Pilipino hanggang ngayon. 'Di ba?"
 
     scene black
     with fade
