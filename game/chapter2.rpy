@@ -46,9 +46,7 @@ label chapter2:
     hide c2_ev1
     call screen search_item(ev_c2_b1, 1000, 725, 0.015, 0.02)
     $ inventory.append(ev_c2_b1)
-    
-    show screen examine_clue(ev_c2_b1)
-    "Evidence Found! Archival photograph or blueprint sketch ng monumentong itinayo sa Magallanes noong 1872.{nw}"
+    call screen examine_clue(ev_c2_b1)
     
     hide screen examine_clue
     
@@ -105,11 +103,8 @@ label chapter2:
     show jipri thinking at shake
     jipri "Hmm, kung 'di ako nagkakamali, may isinulat si Padre Colin, isang hesuwistang misyonaryo na naglimbag ng Labor Evangelica. Base sa kanyang ang Unang Misa mismo ay dito sa Butuan. Heto, mayro'n akong kopya kung gusto mo makita."
 
-    window hide
     $ inventory.append(ev_c2_b2)
-    
-    show screen examine_clue(ev_c2_b2)    
-    hide screen examine_clue 
+    call screen examine_clue(ev_c2_b2)
 
     pause 1.0
     
@@ -184,9 +179,7 @@ label chapter2:
     call screen search_item(ev_c2_b3, 150, 750, 0.05, 0.06)
     $ inventory.append(ev_c2_b3)
     
-    show screen examine_clue(ev_c2_b3)
-    "Evidence Found! 2D parchment of a nautical map na nagpapakita ng waypoints at ruta around northwestern side ng Mindanao.{nw}"
-    
+    call screen examine_clue(ev_c2_b3)
     hide screen examine_clue 
     pause 1.0
     
