@@ -97,8 +97,7 @@ label chapter2:
     show jipri thinking at shake
     jipri "Hmm, kung 'di ako nagkakamali, may isinulat si Padre Colin, isang hesuwistang misyonaryo na naglimbag ng Labor Evangelica. Base sa kanyang ang Unang Misa mismo ay dito sa Butuan. Heto, mayro'n akong kopya kung gusto mo makita."
 
-    window hide 
-    call screen search_item(ev_c2_b2, 780, 800, 0.05, 0.055)
+    window hide
     $ inventory.append(ev_c2_b2)
     
     show screen examine_clue(ev_c2_b2)

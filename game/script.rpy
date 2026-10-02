@@ -311,13 +311,29 @@ screen search_item(evidence, x, y, idle_size, hover_size, idle_img=None, hover_i
 
     if evidence not in inventory:
         if idle_img != None:
-            imagebutton:
-                xpos x ypos y
-                idle Transform(idle_img, zoom=idle_size)
-                hover Transform(hover_img, zoom=hover_size)
+            button:
                 focus_mask True
+                hovered SetScreenVariable("is_hovered", True)
+                unhovered SetScreenVariable("is_hovered", False)
+
+                if is_hovered:
+                    add hover_img:
+                        xpos x ypos y
+                        zoom hover_size
+                    add hover_img:
+                        xpos x ypos y
+                        zoom hover_size
+                        at frickme
+                else:
+                    add idle_img:
+                        xpos x ypos y
+                        zoom idle_size
+                    add idle_img:
+                        xpos x ypos y
+                        zoom idle_size
+                        at frickme
+                        
                 action Return("found_clue")
-            add idle_img xpos x ypos y zoom idle_size at frickme
         else:
             button:
                 focus_mask True
@@ -340,6 +356,7 @@ screen search_item(evidence, x, y, idle_size, hover_size, idle_img=None, hover_i
                         xpos x ypos y
                         zoom idle_size
                         at frickme
+
                 action Return("found_clue")
 
 # Game flow
