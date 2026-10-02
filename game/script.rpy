@@ -98,13 +98,9 @@ transform frickme:
     matrixcolor ColorizeMatrix("#fff", "#fff")
     alpha 0.0
     zoom 1.0
-    parallel:
+    block:
         ease 1.0 alpha 0.6
         ease 1.0 alpha 0.0
-        repeat
-    parallel:
-        ease 2.0 zoom 1.05
-        zoom 1.0
         repeat
 
 # Evidence
@@ -311,6 +307,7 @@ screen examine_clue(clue_item):
             text "[clue_item.details]" size 24 text_align 0.5 color "#000000" xmaximum 600 xalign 0.5
 
 screen search_item(evidence, x, y, idle_size, hover_size, idle_img=None, hover_img=None):
+    default is_hovered = False
 
     if evidence not in inventory:
         if idle_img != None:
@@ -320,13 +317,29 @@ screen search_item(evidence, x, y, idle_size, hover_size, idle_img=None, hover_i
                 hover Transform(hover_img, zoom=hover_size)
                 focus_mask True
                 action Return("found_clue")
-                
+            add idle_img xpos x ypos y zoom idle_size at frickme
         else:
-            imagebutton:
-                xpos x ypos y
-                idle Transform(evidence.visual, zoom=idle_size)
-                hover Transform(evidence.visual, zoom=hover_size)
+            button:
                 focus_mask True
+                hovered SetScreenVariable("is_hovered", True)
+                unhovered SetScreenVariable("is_hovered", False)
+
+                if is_hovered:
+                    add evidence.visual:
+                        xpos x ypos y
+                        zoom hover_size
+                    add evidence.visual:
+                        xpos x ypos y
+                        zoom hover_size
+                        at frickme
+                else:
+                    add evidence.visual:
+                        xpos x ypos y
+                        zoom idle_size
+                    add evidence.visual:
+                        xpos x ypos y
+                        zoom idle_size
+                        at frickme
                 action Return("found_clue")
 
 # Game flow
