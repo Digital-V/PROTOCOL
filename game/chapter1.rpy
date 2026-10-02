@@ -1,4 +1,6 @@
 label chapter1:
+    $ current_chapter = 1
+    
     scene street
     
     show jiperson normal at offscreenleft

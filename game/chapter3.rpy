@@ -1,4 +1,6 @@
 label chapter3:
+    $ current_chapter = 3
+
     scene black
     with fade
     show text "{size=76}CHAPTER 3{/size}" at truecenter

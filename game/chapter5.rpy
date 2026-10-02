@@ -11,6 +11,7 @@ transform nhcp_pop:
         ease 0.4 zoom 0.15
 #Start
 label chapter5:
+    $ current_chapter = 5
 
     scene black
     with fade

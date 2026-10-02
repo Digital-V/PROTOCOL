@@ -1,6 +1,8 @@
 default isTeamLimasawa = False
 
 label chapter2:
+    $ current_chapter = 2
+
     scene black
     with fade
 

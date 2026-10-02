@@ -209,9 +209,14 @@ default inventory = []
 # UI screens
 default show_chapter_info = False
 default current_evidence_page = 0
+default current_chapter = 0
 
 screen chapter_info_hud():
-    zorder 100 
+    zorder 100
+
+    text f"Chapter {current_chapter}":
+        xalign 0.02
+        yalign 0.02 
     
     imagebutton:
         xalign 0.98 yalign 0.02 

@@ -1,5 +1,6 @@
 label chapter4:
-
+    $ current_chapter = 4
+    
     scene black
     with fade
 
