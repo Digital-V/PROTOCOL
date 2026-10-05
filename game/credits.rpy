@@ -19,7 +19,7 @@ screen credits():
             xalign 0.5
             spacing 30
             
-            text "{size=80}PROTOCOL{/size}" xalign 0.5 color "#ffcc00"
+            text "{size=80}Mazaua: The Lost Shore{/size}" xalign 0.5 color "#ffcc00"
             text "{size=34}A Visual Novel on the First Mass Controversy{/size}" xalign 0.5 color "#f5eedc"
             
             null height 60
