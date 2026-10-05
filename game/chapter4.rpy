@@ -1,3 +1,5 @@
+default historical_choice = ""
+
 image c4_ev2 = "evidences/limasawa_5.png"
 image c4_ev3 = "evidences/limasawa_6b.png"
 image c4_ev4 = "evidences/limasawa_9.png"
@@ -19,7 +21,7 @@ label chapter4:
 
     show jiperson normal at offscreenleft
     show jiperson normal at walk(position=0.5)
-    pause 0.8
+    pause 1
     jiperson_ta "Ito na ba yung mismong ruta ng expedition?"
 
     $ inventory.append(ev_c3_b4)
@@ -54,7 +56,7 @@ label chapter4:
 
     show judet normal at offscreenleft
     show judet normal at walk(position=0.5)
-    pause 0.8
+    pause 1
     judet_ta "May compass at distance markers dito."
 
     window hide 
@@ -88,12 +90,12 @@ label chapter4:
     hide judet
 
     scene museum
-    show c4_ev3 at Transform(xpos=960, ypos=525, zoom=0.025)
+    show c4_ev3 at Transform(xpos=935, ypos=525, zoom=0.025)
     with dissolve
 
     show jiperson normal at offscreenleft
     show jiperson normal at walk(position=0.5)
-    pause 0.8
+    pause 1
     jiperson_ta "Wait, nasa Limasawa tayo?"
 
     show jipri normal at offscreenleft
@@ -106,13 +108,12 @@ label chapter4:
     pause 0.8
     judet_ta "Ibig sabihin pwede natin ma-check dito yung ibang descriptions ng Mazua?"
 
-    show judet normal at walk(position=0.92, time=0.6)
     show jiperson normal at walk(position=0.74, time=0.6)
     pause 0.6
 
     window hide 
     hide c4_ev3
-    call screen search_item(ev_c3_b6, 960, 525, 0.025, 0.03, idle_img="evidences/limasawa_6b.png", hover_img="evidences/limasawa_6.png")
+    call screen search_item(ev_c3_b6, 935, 525, 0.025, 0.03, idle_img="evidences/limasawa_6b.png", hover_img="evidences/limasawa_6.png")
     $ inventory.append(ev_c3_b6)
     $ play_sfx("audio/item_found.mp3", 3.0)
     call screen examine_clue(ev_c3_b6)
@@ -139,11 +140,11 @@ label chapter4:
 
     show judet normal at offscreenleft
     show judet normal at walk(position=0.5)
-    pause 0.8
+    pause 1
     judet_ta "Ito na ba ‘yung shrine?"
 
     show jipri normal at offscreenleft
-    show jipri normal at walk(position=0.2)
+    show jipri normal at walk(position=0.25)
     pause 0.8
     jipri_ta "Oo. At dito na rin pagsasama-samahin ang lahat."
 

@@ -2,23 +2,41 @@
     config.default_text_cps = 50  
 
     TAGS = ["jiperson", "jipri", "judet"]
+    speak_order = []
 
     def make_cb(tag, mood="talking"):
         def cb(event, interact=True, **kwargs):
             if not interact:
                 return
             showing = renpy.get_showing_tags()
+            
             if event == "begin":
                 for t in TAGS:
                     if t not in showing:
                         continue
+                        
+                    at = []
                     if t == tag:
-                        at = [renpy.store.undim]
+                        at.append(renpy.store.undim)
                         if mood == "talking":
                             at.append(renpy.store.shake)
                         renpy.show((t, mood), at_list=at)
                     else:
-                        renpy.show((t, "normal"), at_list=[renpy.store.dim])
+                        at.append(renpy.store.dim)
+                        renpy.show((t, "normal"), at_list=at)
+            
+            elif event == "show_done":
+                for t in TAGS:
+                    if t not in showing:
+                        continue
+                        
+                    at = []
+                    if t == tag:
+                        at.append(renpy.store.undim)
+                    else:
+                        at.append(renpy.store.dim)
+                    renpy.show((t, "normal"), at_list=at)
+
             elif event == "end":
                 for t in TAGS:
                     if t in showing:
@@ -100,7 +118,6 @@ transform frickme:
         ease 1.0 alpha 0.0
         repeat
 
-# Evidence
 transform side_tab_transform:
     xalign 1.0
     yalign 0.5
@@ -132,10 +149,8 @@ style choice_vbox:
     xalign 0.5
     yalign 0.85
     yanchor 0.5
-
     spacing gui.choice_spacing
 
-# Properly sliced Frame for the scrollbar thumb asset
 style evidence_scroll_vscrollbar:
     base_bar Frame("#00000011", 2, 2)
     thumb Frame("ui/scrollbar.png", 2, 6)
@@ -289,7 +304,6 @@ screen evidence_menu():
             
             null height 10
             
-            # Centered Header
             vbox:
                 xalign 0.5
                 spacing 2
@@ -303,7 +317,6 @@ screen evidence_menu():
             else:
                 $ current_clue = inventory[current_evidence_page]
                 
-                # Side-by-side content layout
                 hbox:
                     spacing 30
                     xalign 0.5
@@ -324,7 +337,6 @@ screen evidence_menu():
 
             null height 10
 
-            # Bottom pagination
             if len(inventory) > 1:
                 hbox:
                     xalign 0.5
@@ -440,5 +452,6 @@ label start:
     call chapter3 from _call_chapter3
     call chapter4 from _call_chapter4
     call chapter5 from _call_chapter5
-
+    call show_credits from _call_show_credits
+    
     return

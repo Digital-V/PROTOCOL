@@ -16,20 +16,22 @@ label chapter1:
     play music "audio/bg_music.mp3" fadein 1.0 volume 0.2 loop
     
     scene street
+    $ speak_order = ["jiperson", "jipri", "judet"]
     
     show jiperson normal at offscreenleft
-    show jiperson normal at walk(position=0.2)
+    show jiperson normal at walk(position=0.5)
     pause 1.0
 
     jiperson_ta "Paano ba ‘yan, nandito na tayo. Ano pang hinihintay natin? Tara na, hanapin na natin ‘yang mga ebidensya na ‘yan!"
+    
     show jipri normal at offscreenleft
-    show jipri normal at walk(position=0.5)
+    show jipri normal at walk(position=0.0)
     pause 1.0
 
     jipri_ta "Pwede bang wait lang? Kailangan nating maging handa kasi hindi biro ang mga kailangan nating hanapin. Mahalaga at Makasaysayan. Dalawang lugar at magulong ebidensya."
     
     show judet normal at offscreenright
-    show judet normal at walk(position=0.8)
+    show judet normal at walk(position=1.0)
     pause 1.0
 
     judet_ti "Gagawin ba talaga natin to? Nalipasan na to ng panahon e."
@@ -47,20 +49,18 @@ label chapter1:
     show judet normal at walk(position=-0.5, time=1.2)
     pause 1.2
 
-    hide jiperson
     hide jipri
+    hide jiperson
     hide judet
 
     scene museum
+    $ speak_order = ["jipri", "judet", "jiperson"]
     show c1_ev1 at Transform(xpos=935, ypos=525, zoom=0.025)
     with fade
 
     show jipri normal at offscreenleft
-    show jipri normal at walk(position=0.5, time=1.75)
+    show jipri normal at walk(position=0.2, time=1.75)
     pause 2.0
-
-    show jipri normal at walk(position=0.1, time=0.6)
-    pause 0.6
 
     window hide 
     hide c1_ev1
@@ -69,47 +69,49 @@ label chapter1:
     $ play_sfx("audio/item_found.mp3", 3.0)
     call screen examine_clue(ev_c1_b1)
     
+    show jipri normal at walk(position=0.5, time=1.0)
+    pause 1.0
+
     jipri_ta "May matagal nang historical tradition ang nag-uugnay sa Butuan expedition ni Magellan at sa First Mass. Edi matagal na palang may connection ang Butuan?"
     
-    show judet normal at offscreenright
-    show judet normal at walk(position=0.8)
+    show judet normal at offscreenleft
+    show judet normal at walk(position=0.0)
     pause 1.0
 
     judet_ti "Oo, kaya hindi rin basta-basta lang nabuo ang Butuan claim."
     jipri_ta "Kaya pala hindi rin basta-basta nabuo ang Butuan claim. May laban din naman pala!"
     jipri_ta "Oo nga. Pero pa hindi rin sapat eh. Kailangan pa natin ng iba pang ebidensya."
 
-    show jiperson normal at offscreenleft
-    show jiperson normal at walk(position=0.5)
+    show jiperson normal at offscreenright
+    show jiperson normal at walk(position=1.0)
     pause 1.0
 
     jiperson_ta "Edi tara na! May narinig ako na sa Agusan River area, may pinuno raw na na-involve noong panahon ni Magellan. "
     
+    show judet normal at walk(position=-0.5, time=1.2)
+    pause 0.4
     show jipri normal at walk(position=-0.5, time=1.2)
     pause 0.4
     show jiperson normal at walk(position=-0.5, time=1.2)
-    pause 0.4
-    show judet normal at walk(position=-0.5, time=1.2)
     pause 1.2
 
-    hide jipri
     hide judet
+    hide jipri
     hide jiperson
+    
     scene agusan_river
+    $ speak_order = ["judet", "jipri", "jiperson"]
     show c1_ev2 at Transform(xpos=1400, ypos=700, zoom=0.0125)
     with fade
 
     show judet normal at offscreenright
-    show judet normal at walk(position=0.8)
+    show judet normal at walk(position=0.5)
     pause 1.0
 
     judet_ta "O nandito na pala tayo sa Agusan River area, may narinig na rin ako na pangalawang evidence."
 
-    show judet normal at walk(position=0.99, time=0.6)
-    pause 0.6
-
     show jipri normal at offscreenleft
-    show jipri normal at walk(position=0.2)
+    show jipri normal at walk(position=0.0)
     pause 1.0
 
     window hide 
@@ -118,8 +120,9 @@ label chapter1:
     $ inventory.append(ev_c1_b2)
     $ play_sfx("audio/item_found.mp3", 3.0)
     call screen examine_clue(ev_c1_b2)
-    show jiperson normal at offscreenleft
-    show jiperson normal at walk(position=0.5)
+    
+    show jiperson normal at offscreenright
+    show jiperson normal at walk(position=1.0)
     pause 1.0
 
     jipri_ta " Eto na ba yun? May koneksyon ba ‘yan?"
@@ -131,16 +134,17 @@ label chapter1:
 
     show jipri normal at walk(position=-0.5, time=1.2)
     pause 0.4
-    show jiperson normal at walk(position=-0.5, time=1.2)
-    pause 0.4
     show judet normal at walk(position=-0.5, time=1.2)
+    pause 0.4
+    show jiperson normal at walk(position=-0.5, time=1.2)
     pause 1.2
 
-    hide jiperson
     hide jipri
     hide judet
+    hide jiperson
 
     scene balanghai_shrine
+    $ speak_order = ["jiperson", "judet", "jipri"]
     show c1_ev3 at Transform(xpos=653, ypos=630, zoom=0.025)
     with fade
 
@@ -148,12 +152,12 @@ label chapter1:
     show jiperson normal at walk(position=0.5)
     pause 1.0
     
-    show judet normal at offscreenright
-    show judet normal at walk(position=0.8)
+    show judet normal at offscreenleft
+    show judet normal at walk(position=0.0)
     pause 1.0
 
-    show jipri normal at offscreenleft
-    show jipri normal at walk(position=0.1)
+    show jipri normal at offscreenright
+    show jipri normal at walk(position=1.0)
     pause 1.0
 
     window hide 
