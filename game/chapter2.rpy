@@ -35,6 +35,9 @@ label chapter2:
 
     jipri_ta "Tama. base sa history ay itinayo ito ng mga prayleng rekolekto noong 1872 upang igunita ang unang Misa na nangyari noong Abril 8, 1521."
 
+    show jipri normal at walk(position=0.9, time=0.8)
+    pause 1.0
+
     window hide
     hide c2_ev1
     call screen search_item(ev_c2_b1, 1000, 725, 0.015, 0.02)
@@ -43,7 +46,7 @@ label chapter2:
     call screen examine_clue(ev_c2_b1)
     
     show jiperson normal at offscreenright
-    show jiperson normal at walk(position=0.8)
+    show jiperson normal at walk(position=0.5)
     pause 1.0
 
     jiperson_ti "Pero, di naman siguro nangangahulugang dito talaga nangyari sa lugar na to ang unang Misa."
@@ -137,6 +140,7 @@ label chapter2:
     jiperson_ta "Siyang tunay?"
     
     jipri_ta "Tunay, tunay. Base sa kanilang paglalayag, ang mga natitirang barko ay tumungo sa baybayin ng hilaga at kanluran ng Mindanao."
+    
 
     window hide
     hide c2_ev3
