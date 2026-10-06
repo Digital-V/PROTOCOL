@@ -159,7 +159,7 @@ define config.save_directory = "PROTOCOL-1790611984"
 ##
 ## The icon displayed on the taskbar or dock.
 
-define config.window_icon = "gui/window_icon.png"
+define config.window_icon = "gui/window_icon.svg"
 
 
 ## Build configuration #########################################################
